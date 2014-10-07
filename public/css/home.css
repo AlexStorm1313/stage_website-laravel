@@ -1,0 +1,15 @@
+.jumbotron {
+  font-family: 'Source Sans Pro', sans-serif;
+  background-size: contain;
+  color: #fff;
+  background: #28ad93 url('../img/overlay.png');
+}
+.container {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.glyphicon {
+  color: #28ad93;
+}
+.navbar {
+  background: url('../img/overlay.png');
+}

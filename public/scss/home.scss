@@ -1,0 +1,21 @@
+$sans: 'Source Sans Pro', sans-serif;
+$border: 1px solid white;
+$overlay: url('../img/overlay.png');
+
+.jumbotron{
+  font-family: $sans;
+  background-size: contain;
+  color: #ffffff;
+  background: rgb(40, 173, 147) $overlay;
+}
+.container{
+  font-family: $sans;
+}
+
+.glyphicon{
+  color: #28AD93;;
+}
+
+.navbar{
+  background: $overlay;
+}
