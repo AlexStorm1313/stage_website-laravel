@@ -18,6 +18,9 @@ a:hover {
   color: #28ad93;
   text-decoration: none;
 }
+textarea {
+  resize: none;
+}
 .btn {
   background: #28ad93 url('../img/overlay.png');
   border-color: #28ad93;
@@ -29,13 +32,13 @@ a:hover {
   border-color: #28ad93;
   color: #28ad93;
 }
-.login {
+.register {
   font-family: 'Source Sans Pro', sans-serif;
   position: fixed;
   top: 20%;
-  bottom: 30%;
-  right: 35%;
-  left: 35%;
+  bottom: 15%;
+  right: 30%;
+  left: 30%;
   min-width: 250px;
   min-height: 350px;
   margin: 10px;
@@ -47,18 +50,18 @@ a:hover {
   color: #28ad93;
 }
 @media only screen and (max-device-width: 360px) {
-  .login {
-    top: 22.5%;
-    bottom: 22.5%;
-    left: 5%;
-    right: 5%;
+  .register {
+    top: 12.5%;
+    bottom: 12.5%;
+    left: 3%;
+    right: 3%;
   }
 }
 @media only screen and (max-device-width: 960px) {
-  .login {
-    top: 20%;
-    bottom: 20%;
-    left: 35%;
-    right: 35%;
+  .register {
+    top: 10%;
+    bottom: 10%;
+    left: 15%;
+    right: 15%;
   }
 }

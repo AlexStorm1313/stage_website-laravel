@@ -14,7 +14,9 @@
 Route::get('/', function () {
     return View::make('landing');
 });
-Route::get('home', function()
-{
+Route::get('home', function () {
     return View::make('home');
+});
+Route::get('register', function () {
+    return View::make('register');
 });
