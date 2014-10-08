@@ -10,19 +10,13 @@
    <ul class="nav nav-tabs" role="tablist">
          <li class="active link-home"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
          <li class="dropdown navbar-right link-login">
-             <a data-toggle="dropdown" class="dropdown-toggle"><span class="glyphicon glyphicon-user"></span> Login<b class="caret"></b></a>
+             <a data-toggle="dropdown" class="dropdown-toggle"><span class="glyphicon glyphicon-user"></span>$user<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                   <form method="post" action="login" accept-charset="UTF-8">
-                    <div style="margin: 5px;" class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                    <input type="email" class="form-control" placeholder="Email">
-                    </div>
-                    <div style="margin: 5px;" class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                    <input type="password" class="form-control" placeholder=Password>
-                    </div>
-                        <input style="margin: 5px;" class="btn pull-right btn-primary btn-xs" type="submit" id="sign-in" value="Sign In">
-                   </form>
+                     $name
+                     $email
+                     $other shizzle
+                     Settings
+                     Log Out
                 </ul>
           </li>
    </ul>
