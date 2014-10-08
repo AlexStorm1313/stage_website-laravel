@@ -9,6 +9,8 @@
                  <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                        <input id="fname" name="fname" type="text" class="form-control" placeholder="First name">
                  <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                       <input id="infix" name="infix" type="text" class="form-control" placeholder="Infix">
+                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
                        <input id="sname" name="sname" type="text" class="form-control" placeholder="Surname">
                        </div>
                        <div style="margin: 1em;" class="input-group">
@@ -29,7 +31,7 @@
                        </div>
                        <div style="margin: 1em; height: 5em;" class="input-group">
                  <span class="input-group-addon"><span class="glyphicon glyphicon-comment"></span></span>
-                       <textarea style="height: 5em;" id="explain" name="explain" class="form-control" placeholder="Please explain briefly why you want acces."></textarea>
+                       <textarea style="height: 5em;" id="explain" name="explain" class="form-control" placeholder="Please explain briefly why you want access."></textarea>
                        </div>
              <h4>Already have an account <small><a>{{ HTML::link('/', 'Log In ') }}</a></small></h4>
             <input class="btn btn-primary btn-lg center-block" type="submit" id="sign-in" value="Register">
