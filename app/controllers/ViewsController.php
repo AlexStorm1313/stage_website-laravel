@@ -20,6 +20,9 @@ class ViewsController extends BaseController {
     |	Route::get('/', 'ViewsController@show......');
     |
     */
+    public function showLogin(){
+        return View::make('login');
+    }
 
     public function showRegister()
     {

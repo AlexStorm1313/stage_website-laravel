@@ -1,20 +1,13 @@
 @extends('html.landing_html')
-@section('login')
-    <div class="login">
+@section('content')
+    <div class="landing">
     <div class="page-header">
-    	<h2>Log In</h2>
+    	<h2>Welcome</h2>
     </div>
-      <form method="post" action="/login" accept-charset="UTF-8">
-            <div style="margin: 2em;" class="input-group">
-                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                       <input id="email" name="email" type="email" class="form-control" placeholder="Email">
-                       </div>
-                       <div style="margin: 2em;" class="input-group">
-                 <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                       <input id="password" name="password" type="password" class="form-control" placeholder=Password>
-            </div>
-             <h4>No account? Click to <small><a>{{ HTML::link('register', 'Register') }}</a></small></h4>
-            <input class="btn btn-primary btn-lg center-block" type="submit" id="sign-in" value="Log In">
-      </form>
+    <p><h4>Please choose one of the following options.</h4></p>
+    <p class = "btn-toolbar center-block" style="text-align:center">
+         <a class = "btn btn-primary btn-lg" href = "login">Log In</a>
+         <a class = "btn btn-primary btn-lg" href = "register">Register</a>
+    </p>
     </div>
 @stop

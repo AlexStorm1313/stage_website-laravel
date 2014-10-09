@@ -33,7 +33,7 @@
                  <span class="input-group-addon"><span class="glyphicon glyphicon-comment"></span></span>
                        <textarea style="height: 5em;" id="explain" name="explain" class="form-control" placeholder="Please explain briefly why you want access."></textarea>
                        </div>
-             <h4>Already have an account <small><a>{{ HTML::link('/', 'Log In ') }}</a></small></h4>
+             <h4>Already have an account <small><a>{{ HTML::link('login', 'Log In ') }}</a></small></h4>
             <input class="btn btn-primary btn-lg center-block" type="submit" id="sign-in" value="Register">
       </form>
     </div>

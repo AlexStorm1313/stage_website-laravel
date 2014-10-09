@@ -26,30 +26,25 @@ a:hover {
   text-decoration: none;
 }
 
-textarea {
-  resize: none;
-}
-
 .btn {
   background: $green $overlay;
   border-color: $green;
   text-align: center;
   margin-top: 1em;
 }
-
-.btn:hover {
+.btn:hover{
   background: #ffffff;
   border-color: $green;
   color: $green;
 }
 
-.register {
+.login {
   font-family: $sans;
   position: fixed;
-  top: 17.5%;
-  bottom: 12.5%;
-  right: 30%;
-  left: 30%;
+  top: 20%;
+  bottom: 30%;
+  right: 35%;
+  left: 35%;
   min-width: 250px;
   min-height: 350px;
   margin: 10px;
@@ -60,4 +55,8 @@ textarea {
 
 .glyphicon {
   color: $green;
+  $shadow: '0px 0px 5px 0px rgba(50, 50, 50, 0.75)';
+  $sans: 'Source Sans Pro', sans-serif;
+  $green: #28AD93;
+  $overlay: url('../img/overlay.png');
 }

@@ -48,19 +48,3 @@ textarea {
 .glyphicon {
   color: #28ad93;
 }
-@media only screen and (max-device-width: 360px) {
-  .register {
-    top: 12.5%;
-    bottom: 12.5%;
-    left: 3%;
-    right: 3%;
-  }
-}
-@media only screen and (max-device-width: 960px) {
-  .register {
-    top: 10%;
-    bottom: 10%;
-    left: 15%;
-    right: 15%;
-  }
-}

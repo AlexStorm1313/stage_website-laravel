@@ -28,17 +28,20 @@ a:hover {
   border-color: #28ad93;
   color: #28ad93;
 }
-.landing {
+.login {
   font-family: 'Source Sans Pro', sans-serif;
   position: fixed;
-  top: 30%;
-  bottom: 45%;
+  top: 20%;
+  bottom: 30%;
   right: 35%;
   left: 35%;
   min-width: 250px;
-  min-height: 200px;
+  min-height: 350px;
   margin: 10px;
   background-color: #fff;
   box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
   border-radius: 5px;
+}
+.glyphicon {
+  color: #28ad93;
 }
