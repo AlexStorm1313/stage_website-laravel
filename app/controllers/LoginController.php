@@ -20,8 +20,7 @@ class LoginController extends BaseController
 
         if ($validator->fails()) {
             return Redirect::to('login')
-                ->withErrors($validator)
-                ->withInput(Input::except('password'));
+                ->withErrors($validator);
         } else {
 
             $userdata = array(
@@ -32,7 +31,8 @@ class LoginController extends BaseController
             if (Auth::attempt($userdata)) {
                 return Redirect::to('home');
             } else {
-                return Redirect::to('login');
+                return Redirect::to('login')
+                    ->withErrors('Oops, some info is incorrect');
             }
         }
     }

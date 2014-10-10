@@ -24,7 +24,8 @@
 @section('content')
 <h1>Welkom $user</h1>
 {{ $password = DB::table('users')->where('fname', 'Alex')->pluck('password'); }}<br>
-{{ $password = DB::table('users')->where('fname', 'Jan')->pluck('password'); }}
+{{ $password = DB::table('users')->where('fname', 'Jan')->pluck('password'); }}<br>
+{{ $session_id = Session::getId(); }}
 @stop
 @section('footer')
 <div class="navbar navbar-default navbar-fixed-bottom">
