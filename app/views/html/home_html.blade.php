@@ -13,7 +13,6 @@
         <script src="{{ URL::asset('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js') }}"></script>
         <script src="{{ URL::asset('//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js') }}"></script>
         <script src="{{ URL::asset('//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js') }}"></script>
-        <script src="{{ URL::asset('js/home.js') }}"></script>
   </head>
   <header>
   <div class="container">

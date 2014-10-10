@@ -32,6 +32,15 @@ class UserTableSeeder extends Seeder
             'company'  => 'Storm2.dev',
             'role'     => 'Adminzz',
         ));
+        User::create(array(
+            'fname'     => 'Jan',
+            'infix' => 'van',
+            'sname'    => 'Bengen',
+            'email'    => 'jan@wanker.com',
+            'password' => Hash::make('alex13'),
+            'company'  => 'Storm13.dev',
+            'role'     => 'User',
+        ));
     }
 
 }

@@ -13,5 +13,6 @@
 Route::get('/', 'HomeController@showLanding');
 Route::get('login', 'ViewsController@showLogin');
 Route::post('login', array('uses' => 'LoginController@postLogin'));
+Route::get('logout', array('uses' => 'LoginController@postLogout'));
 Route::get('register', 'ViewsController@showRegister');
-Route::get('home', 'ViewsController@showHome');
+Route::get('home', array('before' => array('auth', 'admin'), 'uses' => 'ViewsController@showHome'));
