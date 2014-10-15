@@ -78,8 +78,8 @@ Route::filter('csrf', function () {
 	}
 });
 
-Route::filter('admin', function () {
-	if (Auth::user()->role !== 'Admin') {
-		return Redirect::to('/');
+Route::filter('checklogin', function () {
+	if (Auth::user()) {
+		return Redirect::to('home');
 	}
 });
