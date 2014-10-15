@@ -19,7 +19,6 @@ class CreateRegisterTable extends Migration {
 			$table->string('infix', 32);
 			$table->string('sname', 64);
 			$table->string('email', 320);
-			$table->string('password', 64);
 			$table->string('company', 320);
 			$table->string('explain', 320);
 

@@ -11,8 +11,12 @@
 |
 */
 Route::get('/', array('before' => array('checklogin'), 'uses' => 'HomeController@showLanding'));
-Route::get('login', 'ViewsController@showLogin');
+Route::get('login', array('before' => array('checklogin'), 'uses' => 'ViewsController@showLogin'));
 Route::post('login', array('uses' => 'LoginController@postLogin'));
 Route::get('logout', array('uses' => 'LoginController@postLogout'));
-Route::get('register', 'ViewsController@showRegister');
+Route::get('register', array('before' => array('checklogin'), 'uses' => 'ViewsController@showRegister'));
+Route::post('register', function () {
+        $obj = new RegisterController();
+        return $obj->store();
+    });
 Route::get('home', array('before' => array('auth'), 'uses' => 'ViewsController@showHome'));

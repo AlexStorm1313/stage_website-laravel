@@ -48,3 +48,8 @@ textarea {
 .glyphicon {
   color: #28ad93;
 }
+.error {
+  text-align: center;
+  color: #a80a00;
+  margin-bottom: 5px;
+}
