@@ -53,7 +53,7 @@ return array(
     |
     */
 
-    'from' => array('address' => 'postmaster@sandbox1de5b80be47648cc8192ec307549bf04.mailgun.org', 'name' => 'noreply'),
+    'from' => array('address' => 'postmaster@sandbox1de5b80be47648cc8192ec307549bf04.mailgun.org', 'name' => 'stage.alexbrasser.nl'),
 
     /*
     |--------------------------------------------------------------------------

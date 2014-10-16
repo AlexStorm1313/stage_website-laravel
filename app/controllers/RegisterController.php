@@ -48,10 +48,32 @@ class RegisterController extends \BaseController
             return Redirect::to('register')
                 ->withErrors($validator->messages());
         } else {
-            Register::saveFormData(Input::except(array('_token')));
-            Mail::send('users.welcome', array(Input::get('fname')), function($message){
-                $message->to(Input::get('email'),(Input::get('fname')))->subject('Welcome to the Laravel 4 Auth App!');
+            // I'm creating an array with user's info but most likely you can use $user->email or pass $user object to closure later
+            $input = array(
+                'fname' => Input::get('fname'),
+                'infix' => Input::get('infix'),
+                'sname' => Input::get('sname'),
+                'email' => Input::get('email'),
+                'company' => Input::get('company'),
+                'explain' => Input::get('explain')
+            );
+
+// the data that will be passed into the mail view blade template
+            $data = array(
+                'fname' => $input['fname'],
+                'infix' => $input['infix'],
+                'sname' => $input['sname'],
+                'email' => $input['email'],
+                'company' => $input['company'],
+                'explain' => $input['explain']
+            );
+
+// use Mail::send function to send email passing the data and using the $user variable in the closure
+            Mail::send('emails.register.verify', $data, function ($message) use ($input) {
+                $message->to($input['email'])->subject('An user wants acces to your site!');
             });
+            /*Register::saveFormData(Input::except(array('_token')));*/
+
             return Redirect::to('login');
 
         }
