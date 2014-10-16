@@ -67,12 +67,16 @@ class RegisterController extends \BaseController
                 'company' => $input['company'],
                 'explain' => $input['explain']
             );
+            $email = 'alexbrasser@gmail.com';
 
 // use Mail::send function to send email passing the data and using the $user variable in the closure
             Mail::send('emails.register.verify', $data, function ($message) use ($input) {
-                $message->to($input['email'])->subject('An user wants acces to your site!');
+                $message->to('alexbrasser@gmail.com')->subject('An user wants acces to your site!');
             });
-            /*Register::saveFormData(Input::except(array('_token')));*/
+            Mail::send('emails.register.confirm', $data, function ($message) use ($input) {
+                $message->to($input['email'])->subject('Your request is being verified by the owner!');
+            });
+            Register::saveFormData(Input::except(array('_token')));
 
             return Redirect::to('login');
 
