@@ -16,7 +16,11 @@ Route::post('login', array('uses' => 'LoginController@postLogin'));
 Route::get('logout', array('uses' => 'LoginController@postLogout'));
 Route::get('register', array('before' => array('checklogin'), 'uses' => 'ViewsController@showRegister'));
 Route::post('register', function () {
-        $obj = new RegisterController();
-        return $obj->store();
-    });
+    $obj = new RegisterController();
+    return $obj->store();
+});
 Route::get('home', array('before' => array('auth'), 'uses' => 'ViewsController@showHome'));
+Route::get('users', array('before' => array('auth'), 'uses' => 'ViewsController@showUsers'));
+Route::get('logs', array('before' => array('auth'), 'uses' => 'ViewsController@showLogs'));
+Route::get('documents', array('before' => array('auth'), 'uses' => 'ViewsController@showDocuments'));
+Route::get('settings', array('before' => array('auth'), 'uses' => 'ViewsController@showSettings'));

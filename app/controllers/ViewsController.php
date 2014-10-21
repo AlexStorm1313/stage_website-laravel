@@ -1,12 +1,13 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: alexstorm13
  * Date: 08/10/14
  * Time: 14:27
  */
-
-class ViewsController extends BaseController {
+class ViewsController extends BaseController
+{
 
     /*
     |--------------------------------------------------------------------------
@@ -20,7 +21,8 @@ class ViewsController extends BaseController {
     |	Route::get('/', 'ViewsController@show......');
     |
     */
-    public function showLogin(){
+    public function showLogin()
+    {
         return View::make('login');
     }
 
@@ -33,5 +35,26 @@ class ViewsController extends BaseController {
     {
         return View::make('home');
     }
+
+    public function showUsers()
+    {
+        return View::make('users');
+    }
+
+    public function showLogs()
+    {
+        return View::make('logs');
+    }
+
+    public function showDocuments()
+    {
+        return View::make('documents');
+    }
+
+    public function showSettings()
+    {
+        return View::make('settings');
+    }
+
 
 }
