@@ -20,4 +20,22 @@
     @stop
 
 @section('content')
+<div class="settings">
+ <div style="margin: 1em;" class="input-group">
+                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                       <input id="fname" name="fname" type="text" class="form-control" placeholder="{{ Auth::user()->fname }}">
+                       </div>
+                       <div style="margin: 1em;" class="input-group">
+                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                       <input id="infix" name="infix" type="text" class="form-control" placeholder="{{ Auth::user()->infix }}">
+                       </div>
+                       <div style="margin: 1em;" class="input-group">
+                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                       <input id="sname" name="sname" type="text" class="form-control" placeholder="{{ Auth::user()->sname }}">
+                       </div>
+                       <div style="margin: 1em;" class="input-group">
+                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                       <input id="email" name="email" type="email" class="form-control" placeholder="{{ Auth::user()->email }}">
+</div>
+</div>
 @stop

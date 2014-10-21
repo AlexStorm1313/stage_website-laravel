@@ -38,7 +38,11 @@ class ViewsController extends BaseController
 
     public function showUsers()
     {
-        return View::make('users');
+        $users = User::all();
+        $registers = Register::all();
+        return View::make('users')
+            ->with('users', $users)
+            ->with('registers', $registers);
     }
 
     public function showLogs()

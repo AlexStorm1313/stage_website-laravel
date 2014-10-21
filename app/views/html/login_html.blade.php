@@ -7,13 +7,14 @@
     <title>Log In - Alex Brasser</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Lobster' rel='stylesheet' type='text/css'>
+        <script src="{{ URL::asset('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js') }}"></script>
+        <script src="{{ URL::asset('//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js') }}"></script>
         <link rel="stylesheet" href="{{ URL::asset('css/reset.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/login.css') }}">
         <link rel="stylesheet" href="{{ URL::asset('css/animate.css') }}">
   </head>
   <body>
    @yield('login')
-        <script src="{{ URL::asset('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js') }}"></script>
-        <script src="{{ URL::asset('//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js') }}"></script>
+
   </body>
 </html>

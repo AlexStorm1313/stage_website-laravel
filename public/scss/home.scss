@@ -18,4 +18,14 @@ $overlay: url('../img/overlay.png');
 
 .navbar{
   background: $overlay;
+  position: relative;
+}
+.settings{
+  margin-left: 25%;
+  margin-right: 25%;
+}
+h2{
+color: rgb(40, 173, 147);
+  text-align: center;
+  margin: 1em;
 }

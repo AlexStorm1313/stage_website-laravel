@@ -14,4 +14,5 @@ class Register extends Eloquent {
     public static function saveFormData($data){
         DB::table('register')->insert($data);
     }
+
 }

@@ -18,9 +18,10 @@ class CreateRegisterTable extends Migration {
 			$table->string('fname', 64);
 			$table->string('infix', 32);
 			$table->string('sname', 64);
-			$table->string('email', 320);
-			$table->string('company', 320);
-			$table->string('explain', 320);
+			$table->string('email', 50);
+			$table->string('company', 50);
+			$table->string('explain', 50);
+			$table->boolean('active', false);
 
 			// required for Laravel 4.1.26
 			$table->string('remember_token', 100)->nullable();

@@ -19,4 +19,57 @@
     </ul>
     @stop
 @section('content')
+<table class="table table-striped">
+    <thead>
+    <h2>Waiting for activation</h2>
+        <tr>
+            <th>First Name</th>
+            <th>infix</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>Explaination</th>
+            <th>Activate</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach($registers as $register)
+        <tr>
+            <td>{{ $register->fname }}</td>
+            <td>{{ $register->infix }}</td>
+            <td>{{ $register->sname }}</td>
+            <td>{{ $register->email }}</td>
+            <td>{{ $register->company }}</td>
+            <td>{{ $register->explain }}</td>
+            <td>{{ $register->active }}</td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
+
+<table class="table table-striped">
+ <h2>Users with access</h2>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>infix</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Company</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach($users as $user)
+        <tr>
+            <td>{{ $user->fname }}</td>
+            <td>{{ $user->infix }}</td>
+            <td>{{ $user->sname }}</td>
+            <td>{{ $user->email }}</td>
+            <td>{{ $user->company }}</td>
+            <td>{{ $user->active }}</td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
+
 @stop

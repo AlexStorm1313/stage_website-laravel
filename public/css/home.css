@@ -12,4 +12,14 @@
 }
 .navbar {
   background: url('../img/overlay.png');
+  position: relative;
+}
+.settings {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+h2 {
+  color: #28ad93;
+  text-align: center;
+  margin: 1em;
 }
