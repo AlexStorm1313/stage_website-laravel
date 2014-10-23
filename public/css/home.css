@@ -23,3 +23,24 @@ h2 {
   text-align: center;
   margin: 1em;
 }
+.btn {
+  background: #28ad93 url('../img/overlay.png');
+  border-color: #28ad93;
+  text-align: center;
+  margin-top: 1em;
+}
+.btn:hover {
+  background: #fff;
+  border-color: #28ad93;
+  color: #28ad93;
+}
+a {
+  color: #000;
+}
+h2 a {
+  color: darkgray;
+}
+a:hover {
+  color: #28ad93;
+  text-decoration: none;
+}

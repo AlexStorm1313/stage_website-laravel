@@ -21,14 +21,14 @@
 @section('content')
 <table class="table table-striped">
     <thead>
-    <h2>Waiting for activation</h2>
+    <h2>Waiting for activation<small> <a href="">Edit</a></small></h2>
         <tr>
             <th>First Name</th>
-            <th>infix</th>
+            <th>Infix</th>
             <th>Last Name</th>
             <th>Email</th>
             <th>Company</th>
-            <th>Explaination</th>
+            <th>Role</th>
             <th>Activate</th>
         </tr>
     </thead>
@@ -40,22 +40,34 @@
             <td>{{ $register->sname }}</td>
             <td>{{ $register->email }}</td>
             <td>{{ $register->company }}</td>
-            <td>{{ $register->explain }}</td>
-            <td>{{ $register->active }}</td>
-        </tr>
+            <td><select class="form-control">
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                    <option value="stagedocent">Stagedocent</option>
+                    <option value="stagebegeleider">Stagebegeleider</option>
+                    <option value="stagiair">Stagiair</option>
+                </select></td>
+             @if($register->active == true)
+             <td><button class="btn btn-primary btn-xs">Suspend</button></td>
+             @elseif($register->active == false)
+             <td><button class="btn btn-primary btn-xs">Activate</button></td>
+             @endif        </tr>
     @endforeach
     </tbody>
 </table>
 
 <table class="table table-striped">
- <h2>Users with access</h2>
+ <h2>Users with access<small> <a href="">Edit</a></small></h2>
     <thead>
         <tr>
             <th>First Name</th>
-            <th>infix</th>
+            <th>Infix</th>
             <th>Last Name</th>
             <th>Email</th>
             <th>Company</th>
+            <th>Status</th>
+            <th>Role</th>
+            <th>Edit</th>
         </tr>
     </thead>
     <tbody>
@@ -66,7 +78,13 @@
             <td>{{ $user->sname }}</td>
             <td>{{ $user->email }}</td>
             <td>{{ $user->company }}</td>
-            <td>{{ $user->active }}</td>
+             @if($user->active == true)
+             <td><button class="btn btn-primary btn-xs">Suspend</button></td>
+             @elseif($user->active == false)
+             <td><button class="btn btn-primary btn-xs">Activate</button></td>
+             @endif
+            <td>{{ $user->role }}</td>
+             <td><button class="btn btn-primary btn-xs">Edit</button></td>
         </tr>
     @endforeach
     </tbody>

@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration {
 			$table->string('email', 320);
 			$table->string('password', 64);
 			$table->string('company', 320);
-			$table->string('role', 32);
+			$table->enum('role', array('Admin', 'User', 'Stagedocent', 'Stagebegeleider', 'Stagiair'));
 			$table->boolean('active', true);
 
 			// required for Laravel 4.1.26

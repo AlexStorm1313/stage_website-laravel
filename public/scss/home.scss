@@ -1,6 +1,9 @@
 $sans: 'Source Sans Pro', sans-serif;
 $border: 1px solid white;
 $overlay: url('../img/overlay.png');
+$green: #28AD93;
+$red: #a80a00;
+$overlay: url('../img/overlay.png');
 
 .jumbotron{
   font-family: $sans;
@@ -28,4 +31,26 @@ h2{
 color: rgb(40, 173, 147);
   text-align: center;
   margin: 1em;
+}
+.btn {
+  background: $green $overlay;
+  border-color: $green;
+  text-align: center;
+  margin-top: 1em;
+}
+.btn:hover{
+  background: #ffffff;
+  border-color: $green;
+  color: $green;
+}
+a {
+  color: #000000;
+}
+h2 a {
+  color: darkgray;
+}
+
+a:hover {
+  color: $green;
+  text-decoration: none;
 }
