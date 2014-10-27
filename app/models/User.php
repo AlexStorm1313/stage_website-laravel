@@ -7,6 +7,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
+
 	use UserTrait, RemindableTrait;
 
 	/**
@@ -15,6 +16,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'users';
+	protected $guarded = array();
+	public $timestamps = 'false';
+
+	public static function saveFormData($data){
+		DB::table('users')->insert($data);
+	}
 
 	/**
 	 * The attributes excluded from the model's JSON form.

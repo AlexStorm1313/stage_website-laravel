@@ -22,6 +22,7 @@ Route::post('register', function () {
 Route::get('home', array('before' => array('auth'), 'uses' => 'ViewsController@showHome'));
 Route::get('users', array('before' => array('auth', 'admin'), 'uses' => 'ViewsController@showUsers'));
 Route::post('users', array('uses' => 'LoginController@toRegister'));
+Route::post('users', array('before' => array('auth', 'admin'), 'uses' => 'ActivateController@postActivate'));
 Route::get('logs', array('before' => array('auth'), 'uses' => 'ViewsController@showLogs'));
 Route::get('documents', array('before' => array('auth'), 'uses' => 'ViewsController@showDocuments'));
 Route::get('settings', array('before' => array('auth'), 'uses' => 'ViewsController@showSettings'));

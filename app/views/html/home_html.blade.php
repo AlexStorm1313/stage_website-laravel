@@ -32,7 +32,7 @@
       <script type="text/javascript">
               var d = new Date()
               document.write(d.getFullYear())
-      </script>. Site Designed by <a href="htttp://www.alexbrasser.nl">Alex Brasser</a>. All Rights Reserved.
+      </script>. Site Designed by <a href="http://www.alexbrasser.nl">Alex Brasser</a>. All Rights Reserved.
       </span>
     </div>
   </div>

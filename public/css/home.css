@@ -27,12 +27,16 @@ h2 {
   background: #28ad93 url('../img/overlay.png');
   border-color: #28ad93;
   text-align: center;
-  margin-top: 1em;
 }
 .btn:hover {
   background: #fff;
   border-color: #28ad93;
   color: #28ad93;
+}
+.btn:active {
+  background: #28ad93 url('../img/overlay.png');
+  border-color: #28ad93;
+  text-align: center;
 }
 a {
   color: #000;

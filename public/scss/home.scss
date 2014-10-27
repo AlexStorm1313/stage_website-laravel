@@ -33,15 +33,19 @@ color: rgb(40, 173, 147);
   margin: 1em;
 }
 .btn {
-  background: $green $overlay;
-  border-color: $green;
-  text-align: center;
-  margin-top: 1em;
-}
+   background: $green $overlay;
+   border-color: $green;
+   text-align: center;
+ }
 .btn:hover{
   background: #ffffff;
   border-color: $green;
   color: $green;
+}
+.btn:active {
+  background: $green $overlay;
+  border-color: $green;
+  text-align: center;
 }
 a {
   color: #000000;

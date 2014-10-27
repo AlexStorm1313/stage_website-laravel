@@ -76,7 +76,7 @@ class RegisterController extends \BaseController
             Mail::send('emails.register.confirm', $data, function ($message) use ($input) {
                 $message->to($input['email'])->subject('Your request is being verified by the owner!');
             });
-            Register::saveFormData(Input::except(array('_token')));
+            User::saveFormData(Input::except(array('_token')));
 
             return Redirect::to('login');
 

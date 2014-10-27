@@ -20,44 +20,7 @@
     @stop
 @section('content')
 <table class="table table-striped">
-    <thead>
-    <h2>Waiting for activation<small> <a href="">Edit</a></small></h2>
-        <tr>
-            <th>First Name</th>
-            <th>Infix</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Company</th>
-            <th>Role</th>
-            <th>Activate</th>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach($registers as $register)
-        <tr>
-            <td>{{ $register->fname }}</td>
-            <td>{{ $register->infix }}</td>
-            <td>{{ $register->sname }}</td>
-            <td>{{ $register->email }}</td>
-            <td>{{ $register->company }}</td>
-            <td><select class="form-control">
-                    <option value="admin">Admin</option>
-                    <option value="user">User</option>
-                    <option value="stagedocent">Stagedocent</option>
-                    <option value="stagebegeleider">Stagebegeleider</option>
-                    <option value="stagiair">Stagiair</option>
-                </select></td>
-             @if($register->active == true)
-             <td><button class="btn btn-primary btn-xs">Suspend</button></td>
-             @elseif($register->active == false)
-             <td><button class="btn btn-primary btn-xs">Activate</button></td>
-             @endif        </tr>
-    @endforeach
-    </tbody>
-</table>
-
-<table class="table table-striped">
- <h2>Users with access<small> <a href="">Edit</a></small></h2>
+ <h2>Users</h2>
     <thead>
         <tr>
             <th>First Name</th>
