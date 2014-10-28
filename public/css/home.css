@@ -44,7 +44,14 @@ a {
 h2 a {
   color: darkgray;
 }
+.btn > a {
+  color: #fff;
+}
 a:hover {
   color: #28ad93;
   text-decoration: none;
+}
+.edit_user {
+  margin-left: 150px;
+  margin-right: 150px;
 }

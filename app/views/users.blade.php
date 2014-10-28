@@ -23,14 +23,14 @@
  <h2>Users</h2>
     <thead>
         <tr>
-            <th>First Name</th>
-            <th>Infix</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Company</th>
-            <th>Status</th>
-            <th>Role</th>
-            <th>Edit</th>
+            <th><span class="glyphicon glyphicon-user"></span> First Name</th>
+            <th><span class="glyphicon glyphicon-user"></span> Infix</th>
+            <th><span class="glyphicon glyphicon-user"></span> Last Name</th>
+            <th><span class="glyphicon glyphicon-envelope"></span> Email</th>
+            <th><span class="glyphicon glyphicon-tag"></span> Company</th>
+            <th><span class="glyphicon glyphicon-filter"></span> Status</th>
+            <th><span class="glyphicon glyphicon-user"></span> Role</th>
+            <th><span class="glyphicon glyphicon-user"></span> Edit</th>
         </tr>
     </thead>
     <tbody>
@@ -42,12 +42,12 @@
             <td>{{ $user->email }}</td>
             <td>{{ $user->company }}</td>
              @if($user->active == true)
-             <td><button class="btn btn-primary btn-xs">Suspend</button></td>
+             <td>Acitive</td>
              @elseif($user->active == false)
-             <td><button class="btn btn-primary btn-xs">Activate</button></td>
+             <td>Suspended</td>
              @endif
             <td>{{ $user->role }}</td>
-             <td><button class="btn btn-primary btn-xs">Edit</button></td>
+            <td><button class="btn btn-primary btn-xs"><a href="{{ URL::action('UsersController@edit', [$user->id]);}} ">Edit</a></button></td>
         </tr>
     @endforeach
     </tbody>
