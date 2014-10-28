@@ -47,7 +47,7 @@
              <td>Suspended</td>
              @endif
             <td>{{ $user->role }}</td>
-            <td><button class="btn btn-primary btn-xs"><a href="{{ URL::action('UsersController@edit', [$user->id]);}} ">Edit</a></button></td>
+            <td><a href="{{ URL::action('UsersController@edit', [$user->id]);}}"><button class="btn btn-primary btn-xs">Edit</button></a></td>
         </tr>
     @endforeach
     </tbody>

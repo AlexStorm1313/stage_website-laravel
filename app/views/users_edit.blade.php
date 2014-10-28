@@ -44,9 +44,11 @@
         </div>
         <div style="margin: 0 2em 2em;" class="input-group">
            <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
-           {{ Form::text('role', null, array('class' => 'form-control')) }}
+           {{ Form::select('role', array('User' => 'User', 'Admin' => 'Admin', 'Stagedocent' => 'Stagedocent', 'Stagebegeleider' => 'Stagebegeleider', 'Stagiair' => 'Stagiair'), $user->role, array('class' => 'form-control')) }}
+           </div>
+           <div style="margin: 0 2em 2em;" class="input-group">
            <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
-           {{ Form::text('active', null, array('class' => 'form-control')) }}
+           {{ Form::select('active', array(1 => 'Activate', 0 => 'Suspended'), $user->active, array('class' => 'form-control')) }}
         </div>
         {{ Form::submit('Save', array('class' => 'btn btn-primary btn-lg center-block')) }}
 {{ Form::close() }}
