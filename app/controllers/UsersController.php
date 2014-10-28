@@ -68,7 +68,11 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$user = User::findOrFail($id);
+		$user->fill(Input::all());
+		$user->save();
+
+		return Redirect::to('users');
 	}
 
 

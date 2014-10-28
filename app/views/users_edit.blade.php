@@ -21,7 +21,7 @@
 @section('content')
 <div class="edit_user">
 <h2>Edit {{ $user->fname }} {{ $user->infix }} {{ $user->sname }} <small><a>{{ HTML::link('users', 'Back') }}</a></small></h2>
-{{ Form::model($user) }}
+{{ Form::model($user, ['method'=>'PATCH', 'route' => ['update_user', $user->id]]) }}
         <div style="margin: 0 2em 2em;" class="input-group">
            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
            {{ Form::text('fname', null, array('class' => 'form-control')) }}
