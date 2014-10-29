@@ -74,6 +74,13 @@ class UsersController extends \BaseController
         $user->save();
         return Redirect::to('users');
     }
+    public function update_profile($id)
+    {
+        $user = User::findOrFail($id);
+        $user->fill(Input::all());
+        $user->save();
+        return Redirect::to('settings');
+    }
 
 
     /**

@@ -20,22 +20,26 @@
     @stop
 
 @section('content')
-<div class="settings">
- <div style="margin: 1em;" class="input-group">
-                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                       <input id="fname" name="fname" type="text" class="form-control" placeholder="{{ Auth::user()->fname }}">
-                       </div>
-                       <div style="margin: 1em;" class="input-group">
-                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                       <input id="infix" name="infix" type="text" class="form-control" placeholder="{{ Auth::user()->infix }}">
-                       </div>
-                       <div style="margin: 1em;" class="input-group">
-                 <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                       <input id="sname" name="sname" type="text" class="form-control" placeholder="{{ Auth::user()->sname }}">
-                       </div>
-                       <div style="margin: 1em;" class="input-group">
-                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                       <input id="email" name="email" type="email" class="form-control" placeholder="{{ Auth::user()->email }}">
-</div>
+<div class="edit_user">
+<h2>Edit your profile <small><a>{{ HTML::link('users', 'Back') }}</a></small></h2>
+{{ Form::model(Auth::user(), ['method'=>'PATCH', 'route' => ['update_profile', Auth::user()->id]])  }}
+        <div style="margin: 0 2em 2em;" class="input-group">
+           <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+           {{ Form::text('fname', null, array('class' => 'form-control')) }}
+           <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+           {{ Form::text('infix', null, array('class' => 'form-control')) }}
+           <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+           {{ Form::text('sname', null, array('class' => 'form-control')) }}
+        </div>
+        <div style="margin: 0 2em 2em;" class="input-group">
+           <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+           {{ Form::email('email', null, array('class' => 'form-control')) }}
+        </div>
+        <div style="margin: 0 2em 2em;" class="input-group">
+           <span class="input-group-addon"><span class="glyphicon glyphicon-tag"></span></span>
+           {{ Form::text('company', null, array('class' => 'form-control')) }}
+        </div>
+        {{ Form::submit('Save', array('class' => 'btn btn-primary btn-lg center-block')) }}
+{{ Form::close() }}
 </div>
 @stop
