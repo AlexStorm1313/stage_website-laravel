@@ -36,6 +36,7 @@
     </thead>
     <tbody>
     @foreach($users as $user)
+    @if($user != Auth::User())
         <tr>
             <td>{{ $user->fname }}</td>
             <td>{{ $user->infix }}</td>
@@ -51,6 +52,7 @@
             <td><a href="{{ URL::action('UsersController@edit', [$user->id]);}}"><button class="btn btn-primary btn-xs">Edit</button></a></td>
             <td><a href="{{ URL::action('UsersController@destroy', [$user->id]);}}"><button class="btn btn-primary btn-xs">Delete</button></a></td>
         </tr>
+        @endif
     @endforeach
     </tbody>
 </table>
