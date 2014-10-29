@@ -84,7 +84,9 @@ class UsersController extends \BaseController
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->destroy($id);
+        return Redirect::to('users');
     }
 
 

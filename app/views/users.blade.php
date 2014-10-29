@@ -31,6 +31,7 @@
             <th><span class="glyphicon glyphicon-filter"></span> Status</th>
             <th><span class="glyphicon glyphicon-user"></span> Role</th>
             <th><span class="glyphicon glyphicon-user"></span> Edit</th>
+            <th><span class="glyphicon glyphicon-remove"></span> Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -48,6 +49,7 @@
              @endif
             <td>{{ $user->role }}</td>
             <td><a href="{{ URL::action('UsersController@edit', [$user->id]);}}"><button class="btn btn-primary btn-xs">Edit</button></a></td>
+            <td><a href="{{ URL::action('UsersController@destroy', [$user->id]);}}"><button class="btn btn-primary btn-xs">Delete</button></a></td>
         </tr>
     @endforeach
     </tbody>
