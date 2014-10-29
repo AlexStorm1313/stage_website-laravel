@@ -20,11 +20,11 @@ Route::post('register', function () {
     return $obj->store();
 });
 Route::get('home', array('before' => array('auth'), 'uses' => 'ViewsController@showHome'));
-Route::get('users', array('before' => array('auth', 'admin'), 'uses' => 'ViewsController@showUsers'));
+Route::get('users', array('before' => array('auth', 'boss'), 'uses' => 'ViewsController@showUsers'));
 Route::post('users', array('uses' => 'LoginController@toRegister'));
-Route::get('users/{id}/edit', array('before' => array('auth', 'admin'),'uses' => 'UsersController@edit'));
-Route::patch('users/{id}/update', array('before' => array('auth', 'admin'), 'as' => 'update_user', 'uses' => 'UsersController@update'));
-Route::get('users/{id}/delete', array('before' => array('auth', 'admin'), 'as' => 'delete_user', 'uses' => 'UsersController@destroy'));
+Route::get('users/{id}/edit', array('before' => array('auth', 'boss'), 'uses' => 'UsersController@edit'));
+Route::patch('users/{id}/update', array('before' => array('auth', 'boss'), 'as' => 'update_user', 'uses' => 'UsersController@update'));
+Route::get('users/{id}/delete', array('before' => array('auth', 'boss'), 'as' => 'delete_user', 'uses' => 'UsersController@destroy'));
 Route::patch('settings/{id}/update', array('before' => array('auth'), 'as' => 'update_profile', 'uses' => 'UsersController@update_profile'));
 Route::get('logs', array('before' => array('auth'), 'uses' => 'ViewsController@showLogs'));
 Route::get('documents', array('before' => array('auth'), 'uses' => 'ViewsController@showDocuments'));

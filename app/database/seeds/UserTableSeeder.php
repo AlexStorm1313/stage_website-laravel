@@ -15,13 +15,26 @@ class UserTableSeeder extends Seeder
         DB::table('users')->delete();
 
         User::create(array(
-            'fname'     => 'Alex',
+            'fname' => 'Alex',
             'infix' => '',
-            'sname'    => 'Brasser',
-            'email'    => 'alexbrasser@gmail.com',
+            'sname' => 'Brasser',
+            'email' => 'alexbrasser@gmail.com',
             'password' => Hash::make('alex13'),
-            'company'  => 'Storm.dev',
-            'role'     => 'Admin',
+            'company' => 'Storm.dev',
+            'explain' => 'Intern',
+            'role' => 'Stagiair',
+            'active' => true
+        ));
+        User::create(array(
+            'fname' => 'Admin',
+            'infix' => '',
+            'sname' => 'Root',
+            'email' => 'root@toor.root',
+            'password' => Hash::make('toor'),
+            'company' => 'Storm.dev',
+            'explain' => 'Admin',
+            'role' => 'Admin',
+            'active' => true
         ));
     }
 

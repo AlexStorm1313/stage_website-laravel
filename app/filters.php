@@ -83,8 +83,10 @@ Route::filter('checklogin', function () {
 		return Redirect::to('home');
 	}
 });
-Route::filter('admin', function (){
-	if(Auth::user()->role !== 'Admin'){
+Route::filter('boss', function (){
+	$array = array('Admin', 'Stagiair');
+	$role = Auth::user()->role;
+	if(!in_array($role, $array)){
 		return Redirect::to('home');
 	}
 });

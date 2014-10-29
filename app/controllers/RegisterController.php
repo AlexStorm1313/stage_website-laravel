@@ -57,26 +57,29 @@ class RegisterController extends \BaseController
                 'company' => Input::get('company'),
                 'explain' => Input::get('explain')
             );
-
+            User::saveFormData(Input::except(array('_token')));
 // the data that will be passed into the mail view blade template
+            $id = DB::table('users')->where('email', Input::get('email'))->pluck('id');
             $data = array(
                 'fname' => $input['fname'],
                 'infix' => $input['infix'],
                 'sname' => $input['sname'],
                 'email' => $input['email'],
                 'company' => $input['company'],
-                'explain' => $input['explain']
+                'explain' => $input['explain'],
+                'id' => $id
+
             );
             $email = 'alexbrasser@gmail.com';
 
 // use Mail::send function to send email passing the data and using the $user variable in the closure
-            Mail::send('emails.register.verify', $data, function ($message) use ($input) {
-                $message->to('alexbrasser@gmail.com')->subject('An user wants acces to your site!');
-            });
             Mail::send('emails.register.confirm', $data, function ($message) use ($input) {
                 $message->to($input['email'])->subject('Your request is being verified by the owner!');
             });
-            User::saveFormData(Input::except(array('_token')));
+
+            Mail::send('emails.register.verify', $data, function ($message) use ($input) {
+                $message->to('alexbrasser@gmail.com')->subject('An user wants acces to your site!');
+            });
 
             return Redirect::to('login');
 
