@@ -28,5 +28,6 @@ Route::get('users/{id}/delete', array('before' => array('auth', 'boss'), 'as' =>
 Route::patch('settings/{id}/update', array('before' => array('auth'), 'as' => 'update_profile', 'uses' => 'UsersController@update_profile'));
 Route::get('logs', array('before' => array('auth'), 'uses' => 'ViewsController@showLogs'));
 Route::get('documents', array('before' => array('auth'), 'uses' => 'ViewsController@showDocuments'));
+Route::post('documents', array('uses' => 'FileController@store'));
 Route::get('settings', array('before' => array('auth'), 'uses' => 'ViewsController@showSettings'));
 

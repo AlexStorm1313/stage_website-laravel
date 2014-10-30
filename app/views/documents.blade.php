@@ -21,4 +21,10 @@
     @stop
 
 @section('content')
+<div class="container">
+{{ Form::open(array('method'=>'POST', 'action' => 'FileController@store', 'files' => true)) }}
+{{ Form::file('document') }}
+{{ Form::submit('Upload', array('class' => 'btn btn-primary btn-lg center-block')) }}
+{{ Form::close() }}
+</div>
 @stop
