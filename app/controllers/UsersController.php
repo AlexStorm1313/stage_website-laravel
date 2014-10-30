@@ -72,6 +72,7 @@ class UsersController extends \BaseController
         $user = User::findOrFail($id);
         $user->fill(Input::all());
         $user->save();
+        Session::flash('message_updated', 'User successfully updated');
         return Redirect::to('users');
     }
     public function update_profile($id)
@@ -79,6 +80,7 @@ class UsersController extends \BaseController
         $user = User::findOrFail($id);
         $user->fill(Input::all());
         $user->save();
+        Session::flash('message_updated', 'Settings successfully updated');
         return Redirect::to('settings');
     }
 
@@ -93,6 +95,7 @@ class UsersController extends \BaseController
     {
         $user = User::findOrFail($id);
         $user->destroy($id);
+        Session::flash('message_deleted', 'User successfully deleted');
         return Redirect::to('users');
     }
 

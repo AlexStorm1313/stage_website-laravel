@@ -14,14 +14,18 @@ $overlay: url('../img/overlay.png');
 .container{
   font-family: $sans;
 }
+.margin-bottom{
+  font-family: $sans;
+  margin-bottom: 80px;
+}
 
 .glyphicon{
   color: #28AD93;;
 }
 
-.navbar{
-  background: $overlay;
-  position: relative;
+.footer{
+  background: whitesmoke $overlay;
+  box-shadow: inset 0px 1px 1px 0px rgba(50, 50, 50, 0.75);
 }
 .settings{
   margin-left: 25%;
@@ -65,4 +69,9 @@ a:hover {
 .edit_user{
   margin-left: 150px;
   margin-right: 150px;
+}
+.error{
+  text-align: center;
+  color: $red;
+  margin-bottom: 5px;
 }

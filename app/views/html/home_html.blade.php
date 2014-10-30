@@ -22,10 +22,12 @@
   </header>
   <body>
   <div class="container">
+  <div class="margin-bottom">
   @yield('navigation')
   @yield('content')
   </div>
-  <div class="navbar navbar-default navbar-fixed-bottom">
+  </div>
+  <div class="footer navbar-fixed-bottom">
     <div class="container">
       <span class="navbar-text">
       Copyright &copy;

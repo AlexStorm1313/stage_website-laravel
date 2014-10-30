@@ -7,12 +7,16 @@
 .container {
   font-family: 'Source Sans Pro', sans-serif;
 }
+.margin-bottom {
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-bottom: 80px;
+}
 .glyphicon {
   color: #28ad93;
 }
-.navbar {
-  background: url('../img/overlay.png');
-  position: relative;
+.footer {
+  background: whitesmoke url('../img/overlay.png');
+  box-shadow: inset 0px 1px 1px 0px rgba(50, 50, 50, 0.75);
 }
 .settings {
   margin-left: 25%;
@@ -54,4 +58,9 @@ a:hover {
 .edit_user {
   margin-left: 150px;
   margin-right: 150px;
+}
+.error {
+  text-align: center;
+  color: #a80a00;
+  margin-bottom: 5px;
 }

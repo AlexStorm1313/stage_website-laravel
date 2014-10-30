@@ -22,6 +22,12 @@
 @section('content')
 <table class="table table-striped">
  <h2>Users</h2>
+@if(Session::has('message_deleted'))
+<h4><div class="error"> {{ Session::get('message_deleted') }} </div></h4>
+@endif
+@if(Session::has('message_updated'))
+<h4><div class="error"> {{ Session::get('message_updated') }} </div></h4>
+@endif
     <thead>
         <tr>
             <th><span class="glyphicon glyphicon-user"></span> First Name</th>
