@@ -29,6 +29,9 @@
   </div>
   <div class="footer navbar-fixed-bottom">
     <div class="container">
+    <div class="message">
+                 @yield('message')
+              </div>
       <span class="navbar-text">
       Copyright &copy;
       <script type="text/javascript">

@@ -23,8 +23,22 @@
 @section('content')
 <div class="container">
 {{ Form::open(array('method'=>'POST', 'action' => 'FileController@store', 'files' => true)) }}
+{{ Form::text('filename') }}
 {{ Form::file('document') }}
 {{ Form::submit('Upload', array('class' => 'btn btn-primary btn-lg center-block')) }}
 {{ Form::close() }}
 </div>
+@stop
+@section('message')
+@if(Session::has('message_uploaded'))
+<div class="alert alert-success alert-dismissible animated fadeInUp" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <strong>Success</strong> {{ Session::get('message_uploaded') }}
+</div>
+@endif
+@if(Session::has('message_uploaded_failed'))
+<div class="alert alert-danger alert-dismissible animated fadeInUp" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <strong>Failed!</strong> {{ Session::get('message_uploaded_failed') }}
+</div>@endif
 @stop

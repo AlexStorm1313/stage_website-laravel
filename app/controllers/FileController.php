@@ -32,17 +32,22 @@ class FileController extends \BaseController {
 	public function store()
 	{
 		$file = Input::file('document');
-		$destinationPath = 'uploads';
-// If the uploads fail due to file system, you can try doing public_path().'/uploads'
-		$filename = str_random(12);
-//$filename = $file->getClientOriginalName();
-//$extension =$file->getClientOriginalExtension();
+		$destinationPath = 'uploads/documents';
+		$custom_filename = Input::get('filename');
+		if ($custom_filename == true) {
+			$extension = $file->getClientOriginalExtension();
+			$filename = $custom_filename . '.' . $extension;
+		} else {
+			$filename = $file->getClientOriginalName();
+		}
 		$upload_success = Input::file('document')->move($destinationPath, $filename);
 
 		if( $upload_success ) {
-			return Response::json('success', 200);
-		} else {
-			return Response::json('error', 400);
+			Session::flash('message_uploaded', 'File successfully uploaded');
+			return Redirect::to('documents');
+		} elseif ($file == null) {
+			Session::flash('message_upload_failed', 'File failed to upload');
+			return Redirect::to('documents');
 		}
 	}
 
