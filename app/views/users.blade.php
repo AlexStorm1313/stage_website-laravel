@@ -22,12 +22,6 @@
 @section('content')
 <table class="table table-striped">
  <h2>Users</h2>
-@if(Session::has('message_deleted'))
-<h4><div class="error"> {{ Session::get('message_deleted') }} </div></h4>
-@endif
-@if(Session::has('message_updated'))
-<h4><div class="error"> {{ Session::get('message_updated') }} </div></h4>
-@endif
     <thead>
         <tr>
             <th><span class="glyphicon glyphicon-user"></span> First Name</th>
@@ -63,4 +57,17 @@
     @endforeach
     </tbody>
 </table>
+@stop
+@section('message')
+@if(Session::has('message_updated'))
+<div class="alert alert-success alert-dismissible animated fadeInUp" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <strong>Success</strong> {{ Session::get('message_updated') }}
+</div>
+@endif
+@if(Session::has('message_deleted'))
+<div class="alert alert-success alert-dismissible animated fadeInUp" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <strong>Success</strong> {{ Session::get('message_deleted') }}
+</div>@endif
 @stop

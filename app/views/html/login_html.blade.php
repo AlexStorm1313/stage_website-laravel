@@ -15,6 +15,10 @@
   </head>
   <body>
    @yield('login')
-
+   <div class="container">
+   <div class="message">
+   @yield('message')
+   </div>
+   </div>
   </body>
 </html>

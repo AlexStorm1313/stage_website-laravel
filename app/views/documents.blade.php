@@ -22,6 +22,26 @@
 
 @section('content')
 <div class="container">
+<table class="table table-striped">
+ <h2>Users</h2>
+    <thead>
+        <tr>
+            <th><span class="glyphicon glyphicon-user"></span> First Name</th>
+            <th><span class="glyphicon glyphicon-user"></span> Infix</th>
+            <th><span class="glyphicon glyphicon-user"></span> Last Name</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach ($files as $file)
+        <tr>
+            <td>{{ str_replace($dir, '', $file)}}</td>
+            <td>{{ $dir }}</td>
+            <td>{{ $timestamps }}</td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
+
 {{ Form::open(array('method'=>'POST', 'action' => 'FileController@store', 'files' => true)) }}
 {{ Form::text('filename') }}
 {{ Form::file('document') }}

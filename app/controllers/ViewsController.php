@@ -52,7 +52,13 @@ class ViewsController extends BaseController
 
     public function showDocuments()
     {
-        return View::make('documents');
+        $dir = 'uploads/documents/';
+        $files = File::allfiles($dir);
+        $timestamps = File::lastModified($dir, $files);
+        return View::make('documents')
+            ->with('files', $files)
+            ->with('dir', $dir)
+            ->with('timestamps', $timestamps);
     }
 
     public function showSettings()
