@@ -23,9 +23,6 @@
 @section('content')
 <div class="edit_user">
 <h2>Edit your profile <small><a>{{ HTML::link('users', 'Back') }}</a></small></h2>
-@if(Session::has('message_updated'))
-<h4><div class="error"> {{ Session::get('message_updated') }} </div></h4>
-@endif
 {{ Form::model(Auth::user(), ['method'=>'PATCH', 'route' => ['update_profile', Auth::user()->id]])  }}
         <div style="margin: 0 2em 2em;" class="input-group">
            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
@@ -46,4 +43,12 @@
         {{ Form::submit('Save', array('class' => 'btn btn-primary btn-lg center-block')) }}
 {{ Form::close() }}
 </div>
+@stop
+@section('message')
+@if(Session::has('message_updated'))
+<div class="alert alert-success alert-dismissible animated fadeInUp" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <strong>Success</strong> {{ Session::get('message_updated') }}
+</div>
+@endif
 @stop

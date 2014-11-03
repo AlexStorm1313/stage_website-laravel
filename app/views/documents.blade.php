@@ -23,12 +23,13 @@
 @section('content')
 <div class="container">
 <table class="table table-striped">
- <h2>Users</h2>
+ <h2>Documents</h2>
     <thead>
         <tr>
-            <th><span class="glyphicon glyphicon-user"></span> First Name</th>
-            <th><span class="glyphicon glyphicon-user"></span> Infix</th>
-            <th><span class="glyphicon glyphicon-user"></span> Last Name</th>
+            <th><span class="glyphicon glyphicon-file"></span> Filename</th>
+            <th><span class="glyphicon glyphicon-hdd"></span> Path</th>
+            <th><span class="glyphicon glyphicon-time"></span> Modified</th>
+            <th><span class="glyphicon glyphicon-remove"></span> Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -37,6 +38,7 @@
             <td>{{ str_replace($dir, '', $file)}}</td>
             <td>{{ $dir }}</td>
             <td>{{ $timestamps }}</td>
+            <td><a href=""><button class="btn btn-primary btn-xs">Delete</button></a></td>
         </tr>
     @endforeach
     </tbody>
