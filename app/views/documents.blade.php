@@ -35,10 +35,10 @@
     <tbody>
     @foreach ($files as $file)
         <tr>
-            <td>{{ str_replace($dir, '', $file)}}</td>
+            <td>{{ $filename = str_replace($dir, '', $file)}}</td>
             <td>{{ $dir }}</td>
             <td>{{ $timestamps }}</td>
-            <td><a href=""><button class="btn btn-primary btn-xs">Delete</button></a></td>
+            <td><a href='{{ URL::action('FileController@delete', [$filename])}}'><button class="btn btn-primary btn-xs">Delete</button></a></td>
         </tr>
     @endforeach
     </tbody>

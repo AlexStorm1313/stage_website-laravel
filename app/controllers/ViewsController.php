@@ -66,5 +66,9 @@ class ViewsController extends BaseController
         return View::make('settings');
     }
 
+    public function delete($file){
+        File::delete('public/uploads/documents/'.$file);
+        return Redirect::to('documents');
+    }
 
 }

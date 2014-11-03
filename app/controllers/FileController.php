@@ -96,8 +96,15 @@ class FileController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+
 	}
 
-
+	public function delete($filename){
+		if(File::exists('/public/uploads/documents/github.jpg')){
+			File::delete('/public/uploads/documents'.$filename);
+		}else{
+			return Redirect::to('home')->withErrors($filename);
+		}
+		return Redirect::to('documents');
+	}
 }
