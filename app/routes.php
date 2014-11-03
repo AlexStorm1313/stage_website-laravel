@@ -29,6 +29,6 @@ Route::patch('settings/{id}/update', array('before' => array('auth'), 'as' => 'u
 Route::get('logs', array('before' => array('auth'), 'uses' => 'ViewsController@showLogs'));
 Route::get('documents', array('before' => array('auth'), 'uses' => 'ViewsController@showDocuments'));
 Route::post('documents', array('before' => array('auth', 'boss'), 'uses' => 'FileController@store'));
-Route::get('documents/{filename}/delete', array('before' => array('auth', 'boss'), 'uses' => 'FileController@delete'));
+Route::get('{file}/delete', array('before' => array('auth', 'boss'), 'uses' => 'FileController@delete'));
 Route::get('settings', array('before' => array('auth'), 'uses' => 'ViewsController@showSettings'));
 

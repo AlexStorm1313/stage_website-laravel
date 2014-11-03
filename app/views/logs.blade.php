@@ -21,4 +21,7 @@
     @stop
 
 @section('content')
+<div ng-controller="LogsController" class="logs">
+[[ hello ]]
+</div>
 @stop
