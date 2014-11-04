@@ -19,7 +19,7 @@ Route::post('register', function () {
     $obj = new RegisterController();
     return $obj->store();
 });
-Route::get('password/reset/{id}/{token}', array('before' => array('checklogin'), 'uses' => 'UsersController@setPassword'));
+Route::get('password/reset/{id}/{token}', array('before' => array('checklogin'), 'uses' => 'UsersController@checkToken'));
 Route::get('users/{id}/edit/givepassword', array('before' => array('auth', 'boss'), 'uses' => 'UsersController@givePassword'));
 Route::get('home', array('before' => array('auth'), 'uses' => 'ViewsController@showHome'));
 Route::get('users', array('before' => array('auth', 'boss'), 'uses' => 'ViewsController@showUsers'));

@@ -124,7 +124,7 @@ class UsersController extends \BaseController
         return Redirect::to('users');
     }
 
-    public function setPassword($id, $token)
+    public function checkToken($id, $token)
     {
         $user = User::findOrFail($id);
         if($user->token == $token){
