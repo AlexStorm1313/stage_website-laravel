@@ -65,9 +65,9 @@
   <strong>Success</strong> {{ Session::get('message_updated') }}
 </div>
 @endif
-@if(Session::has('message_deleted'))
-<div class="alert alert-success alert-dismissible animated fadeInUp" role="alert">
+@if(Session::has('dirty'))
+<div class="alert alert-alert alert-dismissible animated fadeInUp" role="alert">
   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-  <strong>Success</strong> {{ Session::get('message_deleted') }}
+  <strong>Success</strong> {{ Session::get('dirty') }}
 </div>@endif
 @stop

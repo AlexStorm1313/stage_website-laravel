@@ -72,7 +72,11 @@ class UsersController extends \BaseController
         $user = User::findOrFail($id);
         $user->fill(Input::all());
         $user->save();
-        Session::flash('message_updated', 'User successfully updated');
+        if ($user->isDirty($user->role)) {
+            Session::flash('dirty', 'dirty nigga');
+        } else {
+            Session::flash('message_updated', 'User successfully updated');
+        }
         return Redirect::to('users');
     }
     public function update_profile($id)
