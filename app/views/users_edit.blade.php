@@ -53,5 +53,6 @@
         </div>
         {{ Form::submit('Save', array('class' => 'btn btn-primary btn-lg center-block')) }}
 {{ Form::close() }}
+        <td><a href="{{ URL::action('UsersController@givePassword', [$user->id]);}}"><button class="btn btn-primary btn-lg">Give Password</button></a></td>
 </div>
 @stop

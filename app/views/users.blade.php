@@ -28,6 +28,7 @@
             <th><span class="glyphicon glyphicon-user"></span> Infix</th>
             <th><span class="glyphicon glyphicon-user"></span> Last Name</th>
             <th><span class="glyphicon glyphicon-envelope"></span> Email</th>
+            <th><span class="glyphicon glyphicon-lock"></span> Password</th>
             <th><span class="glyphicon glyphicon-tag"></span> Company</th>
             <th><span class="glyphicon glyphicon-filter"></span> Status</th>
             <th><span class="glyphicon glyphicon-user"></span> Role</th>
@@ -43,6 +44,11 @@
             <td>{{ $user->infix }}</td>
             <td>{{ $user->sname }}</td>
             <td>{{ $user->email }}</td>
+            @if($user->password == null)
+                <td>No password</td>
+            @else
+            <td>Has password</td>
+            @endif
             <td>{{ $user->company }}</td>
              @if($user->active == true)
              <td>Acitive</td>

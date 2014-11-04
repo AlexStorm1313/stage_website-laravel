@@ -72,7 +72,7 @@ class UsersController extends \BaseController
         $user = User::findOrFail($id);
         $user->fill(Input::all());
         $user->save();
-        if ($user->isDirty($user->role)) {
+        if ($user->getDirty()) {
             Session::flash('dirty', 'dirty nigga');
         } else {
             Session::flash('message_updated', 'User successfully updated');
@@ -103,5 +103,21 @@ class UsersController extends \BaseController
         return Redirect::to('users');
     }
 
+    public function givePassword($id)
+    {
+        $user = User::findOrFail($id);
+        $data = array(
+            'fname' => $user->fname,
+            'infix' => $user->infix,
+            'sname' => $user->sname,
+            'email' => $user->email,
+            'company' => $user->company,
+            'explain' => $user->explain);
+
+        Mail::send('emails.register.setpass', $data, function ($message) use ($user) {
+            $message->to('alexbrasser@gmail.com')->subject('An user wants acces to your site!');
+        });
+        return Redirect::to('users');
+    }
 
 }

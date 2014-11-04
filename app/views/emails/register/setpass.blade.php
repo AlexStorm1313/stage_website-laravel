@@ -6,7 +6,7 @@
 	</head>
 	<body>
 	<div class="container">
-	    <h1 style="color: #28AD93;">Hello again, <small style="color:darkgray">{{ $fname }} {{ $infix }} {{ $sname }}.</small></h1>
+	    <h1 style="color: #28AD93;">Hello again, <small style="color:darkgray">{{ $fname }}.</small></h1>
 	    <p>Please create a password to access your account</p>
     </div>
 	</body>
