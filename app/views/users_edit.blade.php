@@ -51,8 +51,8 @@
            <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
            {{ Form::select('active', array(1 => 'Activate', 0 => 'Suspended'), $user->active, array('class' => 'form-control')) }}
         </div>
-        {{ Form::submit('Save', array('class' => 'btn btn-primary btn-lg center-block')) }}
+        {{ Form::submit('Save', array('style'=> 'margin-bottom: 5em;', 'class' => 'btn btn-primary btn-lg pull-right')) }}
 {{ Form::close() }}
-        <td><a href="{{ URL::action('UsersController@givePassword', [$user->id]);}}"><button class="btn btn-primary btn-lg">Give Password</button></a></td>
+        <td><a href="{{ URL::action('UsersController@givePassword', [$user->id]);}}"><button type="button" class="btn btn-primary btn-lg pull-left">Give Password</button></a></td>
 </div>
 @stop

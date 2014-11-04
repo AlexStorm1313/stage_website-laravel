@@ -106,18 +106,32 @@ class UsersController extends \BaseController
     public function givePassword($id)
     {
         $user = User::findOrFail($id);
+        $random = str_random(256);
+        $user->token = $random;
+        $user->save();
         $data = array(
             'fname' => $user->fname,
             'infix' => $user->infix,
             'sname' => $user->sname,
             'email' => $user->email,
             'company' => $user->company,
-            'explain' => $user->explain);
-
+            'explain' => $user->explain,
+            'id' => $user->id,
+            'token' => $random);
         Mail::send('emails.register.setpass', $data, function ($message) use ($user) {
             $message->to('alexbrasser@gmail.com')->subject('An user wants acces to your site!');
         });
         return Redirect::to('users');
+    }
+
+    public function setPassword($id, $token)
+    {
+        $user = User::findOrFail($id);
+        if($user->token == $token){
+            return View::make('setPassword');
+        }else{
+            return Redirect::to('landing');
+        }
     }
 
 }

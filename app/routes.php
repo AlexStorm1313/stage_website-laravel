@@ -19,7 +19,8 @@ Route::post('register', function () {
     $obj = new RegisterController();
     return $obj->store();
 });
-Route::any('users/{id}/edit/givepassword', array('before' => array('auth', 'boss'), 'uses' => 'UsersController@givePassword'));
+Route::get('password/reset/{id}/{token}', array('before' => array('checklogin'), 'uses' => 'UsersController@setPassword'));
+Route::get('users/{id}/edit/givepassword', array('before' => array('auth', 'boss'), 'uses' => 'UsersController@givePassword'));
 Route::get('home', array('before' => array('auth'), 'uses' => 'ViewsController@showHome'));
 Route::get('users', array('before' => array('auth', 'boss'), 'uses' => 'ViewsController@showUsers'));
 Route::post('users', array('uses' => 'LoginController@toRegister'));
