@@ -1,6 +1,6 @@
 <?php
 
-class UsersController extends \BaseController
+class UsersController extends BaseController
 {
 
     /**
@@ -128,10 +128,17 @@ class UsersController extends \BaseController
     {
         $user = User::findOrFail($id);
         if($user->token == $token){
-            return View::make('setPassword');
+            return View::make('setPassword', $user)->with('user', array($user));
         }else{
             return Redirect::to('landing');
         }
     }
 
+    public function setPassword($id)
+    {
+        $user = User::findOrFail($id);
+        $user->password = Hash::make(Input::get('password'));
+        $user->save();
+        return Redirect::to('login');
+    }
 }

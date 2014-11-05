@@ -10,30 +10,34 @@ class LoginController extends BaseController
 {
     public function postLogin()
     {
+        $active = DB::table('users')->where('email', Input::get('email'))->pluck('active');
+        if($active == true) {
 
-        $rules = array(
-            'email' => 'required|email',
-            'password' => 'required'
-        );
-
-        $validator = Validator::make(Input::all(), $rules);
-
-        if ($validator->fails()) {
-            return Redirect::to('login')
-                ->withErrors($validator);
-        } else {
-
-            $userdata = array(
-                'email' => Input::get('email'),
-                'password' => Input::get('password')
+            $rules = array(
+                'email' => 'required|email',
+                'password' => 'required'
             );
+            $validator = Validator::make(Input::all(), $rules);
 
-            if (Auth::attempt($userdata)) {
-                return Redirect::to('home');
-            } else {
+            if ($validator->fails()) {
                 return Redirect::to('login')
-                    ->withErrors('Oops, some info is incorrect');
+                    ->withErrors($validator);
+            } else {
+
+                $userdata = array(
+                    'email' => Input::get('email'),
+                    'password' => Input::get('password')
+                );
+
+                if (Auth::attempt($userdata)) {
+                    return Redirect::to('home');
+                } else {
+                    return Redirect::to('login')
+                        ->withErrors('Oops, some info is incorrect');
+                }
             }
+        }else{
+            return Redirect::to('login')->withErrors('You are not activated yet');
         }
     }
 
