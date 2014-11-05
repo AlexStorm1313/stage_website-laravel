@@ -99,9 +99,9 @@ class FileController extends \BaseController {
 
 	}
 
-	public function delete($file){
-		if(File::exists($file)){
-			File::delete($file);
+	public function delete($filename){
+		if(File::exists('uploads/documents/'.$filename)){
+			File::delete('uploads/documents/'.$filename);
 		}else{
 			return Redirect::to('home');
 		}

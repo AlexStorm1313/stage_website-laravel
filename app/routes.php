@@ -32,7 +32,7 @@ Route::patch('settings/{id}/update', array('before' => array('auth'), 'as' => 'u
 Route::get('logs', array('before' => array('auth'), 'uses' => 'ViewsController@showLogs'));
 Route::get('documents', array('before' => array('auth'), 'uses' => 'ViewsController@showDocuments'));
 Route::post('documents', array('before' => array('auth', 'boss'), 'uses' => 'FileController@store'));
-Route::get('{file}/delete', array('before' => array('auth', 'boss'), 'uses' => 'FileController@delete'));
+Route::get('/uploads/documents/{filename}/delete', array('before' => array('auth', 'boss'), 'uses' => 'FileController@delete'));
 Route::get('settings', array('before' => array('auth'), 'uses' => 'ViewsController@showSettings'));
 Route::get('settings/{id}/update_password', array('before' => array('auth'),'as' => 'update_password', 'uses' => 'UsersController@updatePassword'));
 
