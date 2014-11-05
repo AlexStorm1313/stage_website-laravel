@@ -19,8 +19,8 @@ Route::post('register', function () {
     $obj = new RegisterController();
     return $obj->store();
 });
-Route::post('password/reset/{id}/{token}', array('before' => array('checklogin'), 'as' => 'set_password', 'uses' => 'UsersController@setPassword'));
-Route::get('password/reset/{id}/{token}', array('before' => array('checklogin'), 'uses' => 'UsersController@checkToken'));
+Route::post('password/reset/{id}/{token}', array('before' => array(), 'as' => 'set_password', 'uses' => 'UsersController@setPassword'));
+Route::get('password/reset/{id}/{token}', array('before' => array(), 'uses' => 'UsersController@checkToken'));
 Route::get('users/{id}/edit/givepassword', array('before' => array('auth', 'boss'), 'uses' => 'UsersController@givePassword'));
 Route::get('home', array('before' => array('auth'), 'uses' => 'ViewsController@showHome'));
 Route::get('users', array('before' => array('auth', 'boss'), 'uses' => 'ViewsController@showUsers'));
@@ -34,4 +34,6 @@ Route::get('documents', array('before' => array('auth'), 'uses' => 'ViewsControl
 Route::post('documents', array('before' => array('auth', 'boss'), 'uses' => 'FileController@store'));
 Route::get('{file}/delete', array('before' => array('auth', 'boss'), 'uses' => 'FileController@delete'));
 Route::get('settings', array('before' => array('auth'), 'uses' => 'ViewsController@showSettings'));
+Route::get('settings/{id}/update_password', array('before' => array('auth'),'as' => 'update_password', 'uses' => 'UsersController@updatePassword'));
+
 

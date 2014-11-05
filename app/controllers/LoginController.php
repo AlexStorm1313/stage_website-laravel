@@ -11,7 +11,7 @@ class LoginController extends BaseController
     public function postLogin()
     {
         $active = DB::table('users')->where('email', Input::get('email'))->pluck('active');
-        if($active == true) {
+        if ($active == true) {
 
             $rules = array(
                 'email' => 'required|email',
@@ -36,7 +36,7 @@ class LoginController extends BaseController
                         ->withErrors('Oops, some info is incorrect');
                 }
             }
-        }else{
+        } else {
             return Redirect::to('login')->withErrors('You are not activated yet');
         }
     }

@@ -42,6 +42,9 @@
         </div>
         {{ Form::submit('Save', array('class' => 'btn btn-primary btn-lg center-block')) }}
 {{ Form::close() }}
+<div style="margin: 0 2em 2em;" class="input-group">
+    <td><a href="{{ URL::action('UsersController@updatePassword', [Auth::user()->id]);}}"><button class="btn btn-primary">Change Password</button></a></td>
+</div>
 </div>
 @stop
 @section('message')

@@ -71,12 +71,23 @@ class UsersController extends BaseController
     {
         $user = User::findOrFail($id);
         $user->fill(Input::all());
-        $user->save();
-        if ($user->getDirty()) {
-            Session::flash('dirty', 'dirty nigga');
+        if ($user->isDirty('active')) {
+            Session::flash('active', 'User Activated or Deactivated successfully');
+            $data = array(
+                'fname' => $user->fname,
+                'infix' => $user->infix,
+                'sname' => $user->sname,
+                'email' => $user->email,
+                'company' => $user->company,
+                'explain' => $user->explain,
+                'id' => $user->id);
+            Mail::send('emails.register.changein', $data, function ($message) use ($user) {
+                $message->to($user->email)->subject('Change in account settings');
+            });
         } else {
             Session::flash('message_updated', 'User successfully updated');
         }
+        $user->save();
         return Redirect::to('users');
     }
     public function update_profile($id)
@@ -85,6 +96,17 @@ class UsersController extends BaseController
         $user->fill(Input::all());
         $user->save();
         Session::flash('message_updated', 'Settings successfully updated');
+        $data = array(
+            'fname' => $user->fname,
+            'infix' => $user->infix,
+            'sname' => $user->sname,
+            'email' => $user->email,
+            'company' => $user->company,
+            'explain' => $user->explain,
+            'id' => $user->id);
+        Mail::send('emails.register.changein', $data, function ($message) use ($user) {
+            $message->to($user->email)->subject('Change in account settings');
+        });
         return Redirect::to('settings');
     }
 
@@ -119,7 +141,7 @@ class UsersController extends BaseController
             'id' => $user->id,
             'token' => $random);
         Mail::send('emails.register.setpass', $data, function ($message) use ($user) {
-            $message->to('alexbrasser@gmail.com')->subject('An user wants acces to your site!');
+            $message->to($user->email)->subject('Create your password');
         });
         return Redirect::to('users');
     }
@@ -130,7 +152,7 @@ class UsersController extends BaseController
         if($user->token == $token){
             return View::make('setPassword', $user)->with('user', array($user));
         }else{
-            return Redirect::to('landing');
+            return Redirect::to('/');
         }
     }
 
@@ -140,5 +162,26 @@ class UsersController extends BaseController
         $user->password = Hash::make(Input::get('password'));
         $user->save();
         return Redirect::to('login');
+    }
+
+    public function updatePassword($id)
+    {
+        $user = User::findOrFail($id);
+        $random = str_random(256);
+        $user->token = $random;
+        $user->save();
+        $data = array(
+            'fname' => $user->fname,
+            'infix' => $user->infix,
+            'sname' => $user->sname,
+            'email' => $user->email,
+            'company' => $user->company,
+            'explain' => $user->explain,
+            'id' => $user->id,
+            'token' => $random);
+        Mail::send('emails.register.setpass', $data, function ($message) use ($user) {
+            $message->to($user->email)->subject('Change your password');
+        });
+        return Redirect::to('settings');
     }
 }
