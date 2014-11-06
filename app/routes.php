@@ -19,6 +19,7 @@ Route::post('register', function () {
     $obj = new RegisterController();
     return $obj->store();
 });
+Route::get('activate/{id}/{token}', array('before' => array(), 'as' => 'activate_link', 'uses' => 'RegisterController@activateUser'));
 Route::post('password/reset/{id}/{token}', array('before' => array(), 'as' => 'set_password', 'uses' => 'UsersController@setPassword'));
 Route::get('password/reset/{id}/{token}', array('before' => array(), 'uses' => 'UsersController@checkToken'));
 Route::get('users/{id}/edit/givepassword', array('before' => array('auth', 'boss'), 'uses' => 'UsersController@givePassword'));

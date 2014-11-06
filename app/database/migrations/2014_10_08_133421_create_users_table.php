@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration {
 			$table->string('explain', 320);
 			$table->enum('role', array( 'User', 'Admin', 'Stagedocent', 'Stagebegeleider', 'Stagiair'))->default('User');
 			$table->boolean('active', true);
+			$table->boolean('activation_link', true);
 			$table->string('token', 256);
 
 			// required for Laravel 4.1.26

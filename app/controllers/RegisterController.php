@@ -60,6 +60,10 @@ class RegisterController extends \BaseController
             User::saveFormData(Input::except(array('_token')));
 // the data that will be passed into the mail view blade template
             $id = DB::table('users')->where('email', Input::get('email'))->pluck('id');
+            $user = User::findOrFail($id);
+            $random = str_random(256);
+            $user->token = $random;
+            $user->save();
             $data = array(
                 'fname' => $input['fname'],
                 'infix' => $input['infix'],
@@ -67,19 +71,17 @@ class RegisterController extends \BaseController
                 'email' => $input['email'],
                 'company' => $input['company'],
                 'explain' => $input['explain'],
-                'id' => $id
+                'id' => $id,
+                'token' => $random
 
             );
             $email = 'alexbrasser@gmail.com';
 
 // use Mail::send function to send email passing the data and using the $user variable in the closure
             Mail::send('emails.register.confirm', $data, function ($message) use ($input) {
-                $message->to($input['email'])->subject('Your request is being verified by the owner!');
+                $message->to($input['email'])->subject('Complete registration');
             });
 
-            Mail::send('emails.register.verify', $data, function ($message) use ($input) {
-                $message->to('alexbrasser@gmail.com')->subject('An user wants acces to your site!');
-            });
 
             return Redirect::to('login');
 
@@ -133,4 +135,32 @@ class RegisterController extends \BaseController
     {
         //
     }
+
+    public function activateUser($id, $token)
+    {
+        $user = User::findOrFail($id);
+        $data = array(
+            'fname' => $user->fname,
+            'infix' => $user->infix,
+            'sname' => $user->sname,
+            'email' => $user->email,
+            'company' => $user->company,
+            'explain' => $user->explain,
+            'id' => $user->id);
+        if ($user->token == $token) {
+            $user->activation_link = true;
+            $user->token = null;
+            $user->save();
+            Mail::send('emails.register.verify', $data, function ($message) use ($user) {
+                $message->to('alexbrasser@gmail.com')->subject('An user wants acces to your site!');
+
+            });
+            return View::make('activation');
+        } else {
+            return Redirect::to('/');
+        }
+
+
+    }
+
 }

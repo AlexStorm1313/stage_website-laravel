@@ -7,7 +7,7 @@
 	<body>
 	<div class="container">
 	    <h1 style="color: #28AD93;">Welcome <small style="color:darkgray">{{ $fname }} {{ $infix }} {{ $sname }}.</small></h1>
-	    <p>You will receive an email to setup your password once you are verified.</p>
+	    <p>Please click <a href>{{ URL::to('activate',array($id, $token)) }}</a> link to confirm your registration.</p>
     </div>
 	</body>
 </html>

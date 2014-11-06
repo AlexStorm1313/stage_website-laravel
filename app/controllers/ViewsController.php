@@ -70,8 +70,8 @@ class ViewsController extends BaseController
         File::delete('public/uploads/documents/'.$file);
         return Redirect::to('documents');
     }
-    public function showSetPassword(){
+    public function showSetPassword()
+    {
         return View::make('setPassword');
     }
-
 }
