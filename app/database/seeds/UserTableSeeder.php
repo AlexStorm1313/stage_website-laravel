@@ -23,7 +23,8 @@ class UserTableSeeder extends Seeder
             'company' => 'Storm.dev',
             'explain' => 'Intern',
             'role' => 'Stagiair',
-            'active' => true
+            'active' => true,
+            'activation_link' => true
         ));
         User::create(array(
             'fname' => 'Admin',
@@ -34,7 +35,8 @@ class UserTableSeeder extends Seeder
             'company' => 'Storm.dev',
             'explain' => 'Admin',
             'role' => 'Admin',
-            'active' => true
+            'active' => true,
+            'activation_link' => true
         ));
     }
 

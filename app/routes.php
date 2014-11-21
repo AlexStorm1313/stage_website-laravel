@@ -35,6 +35,24 @@ Route::get('documents', array('before' => array('auth'), 'uses' => 'ViewsControl
 Route::post('documents', array('before' => array('auth', 'boss'), 'uses' => 'FileController@store'));
 Route::get('/uploads/documents/{filename}/delete', array('before' => array('auth', 'boss'), 'uses' => 'FileController@delete'));
 Route::get('settings', array('before' => array('auth'), 'uses' => 'ViewsController@showSettings'));
-Route::get('settings/{id}/update_password', array('before' => array('auth'),'as' => 'update_password', 'uses' => 'UsersController@updatePassword'));
+Route::get('settings/{id}/update_password', array('before' => array('auth'), 'as' => 'update_password', 'uses' => 'UsersController@updatePassword'));
 
+// =============================================
+// API ROUTES ==================================
+// =============================================
+Route::group(array('prefix' => 'api'), function () {
 
+    // since we will be using this just for CRUD, we won't need create and edit
+    // Angular will handle both of those forms
+    // this ensures that a user can't access api/create or api/edit when there's nothing there
+    Route::resource('weeks', 'WeekController');
+});
+
+// =============================================
+// CATCH ALL ROUTE =============================
+// =============================================
+// all routes that are not home or api will be redirected to the frontend
+// this allows angular to route them
+App::missing(function ($exception) {
+    return Redirect::to('logs');
+});
