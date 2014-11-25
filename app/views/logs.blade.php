@@ -48,7 +48,8 @@
                     <td ng-if="week.completed == true">Completed</td>
                     <td ng-if="week.completed == false">Not yet Completed</td>
                     <td><button class="btn btn-primary btn-xs">Open</button></td>
-                    <td><button ng-click="completeWeek(week.id)" class="btn btn-primary btn-xs">Complete</button></td>
+                    <td ng-if="week.completed == true"><button ng-click="completeWeek(week.id)" class="btn btn-primary btn-xs">Completed</button></td>
+                    <td ng-if="week.completed == false"><button ng-click="completeWeek(week.id)" class="btn btn-primary btn-xs">Complete</button></td>
                     <td><button ng-click="deleteWeek(week.id)" class="btn btn-primary btn-xs">Delete</button></td>
                 </tr>
             </tbody>

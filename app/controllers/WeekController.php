@@ -33,8 +33,9 @@ class WeekController extends \BaseController {
 	{
 		Week::create(array(
 			'date_created' => date('Y-m-d'),
-			'date_completed' => 'NULL',
-			'completed' => 0
+			'date_completed' => '0000-00-00',
+			'completed' => false,
+			'can_be_completed' => date('Y-m-d', StrToTime("Next Sunday"))
 		));
 
 		return Response::json(array('success' => true));
@@ -62,10 +63,15 @@ class WeekController extends \BaseController {
 	public function edit($id)
 	{
 		$week = Week::findOrFail($id);
-		$week->completed = true;
-		$week->date_completed = date('Y-m-d');
-		$week->save();
-		return Response::json(array('success' => true));
+		if (strtotime(Date('y-m-d')) > strtotime($week->can_be_completed)) {
+			$week->completed = true;
+			$week->date_completed = date('Y-m-d');
+			$week->save();
+			return Response::json(array('success' => true));
+		}else {
+			return Response::json(array('success' => false));
+		}
+
 	}
 
 
