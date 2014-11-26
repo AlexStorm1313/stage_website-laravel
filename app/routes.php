@@ -46,6 +46,8 @@ Route::group(array('prefix' => 'api'), function () {
     // Angular will handle both of those forms
     // this ensures that a user can't access api/create or api/edit when there's nothing there
     Route::resource('weeks', 'WeekController');
+    Route::resource('days', 'DayController');
+    Route::resource('hours', 'HourController');
 });
 
 // =============================================

@@ -25,7 +25,15 @@
 @stop
 
 @section('content')
-    <div style="margin-bottom: 150px;" ng-app="logApp" ng-controller="mainController">
+    <div style="margin-bottom: 150px;" ng-app="logApp" ng-controller="weekController">
+        <div style="width: 125px" class="input-group pull-right">
+            <input ng-model="searchWeek.week_number" style="height: 36px;" type="number" class="form-control">
+            <span class="input-group-addon"> <button class="btn btn-primary btn-xs">Week</button></span>
+        </div>
+        <div style="width: 125px" class="input-group pull-right">
+            <input style="height: 36px;" type="date" class="form-control">
+            <span class="input-group-addon"> <button class="btn btn-primary btn-xs">Date</button></span>
+        </div>
         <table class="table table-striped">
             <h2>Weeks</h2>
             <thead>
@@ -40,8 +48,8 @@
             </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="week in weeks">
-                    <td><% week.date_created | date: 'ww' %></td>
+                <tr ng-repeat="week in weeks | filter:searchWeek">
+                    <td><% week.week_number %></td>
                     <td><% week.date_created %></td>
                     <td ng-if="week.date_completed == '0000-00-00'">Not yet completed</td>
                     <td ng-if="week.date_completed != '0000-00-00'"><% week.date_completed %></td>

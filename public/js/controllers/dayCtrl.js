@@ -1,8 +1,11 @@
+/**
+ * Created by alexstorm13 on 26/11/14.
+ */
 angular.module('mainCtrl', [])
 
     // inject the Week service into our controller
-    .controller('mainController', function ($scope, $http, Week) {
-        $scope.weekData = {};
+    .controller('dayController', function ($scope, $http, Week) {
+        $scope.dayData = {};
         $scope.loading = true;
 
         Week.get()

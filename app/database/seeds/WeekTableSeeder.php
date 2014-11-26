@@ -12,7 +12,9 @@ class WeekTableSeeder extends Seeder
             'date_created' => date('Y-m-d'),
             'completed' => false,
             'date_completed' => '0000-00-00',
-            'can_be_completed' => date('y-m-d', StrToTime("Next Sunday"))
+            'can_be_completed' => date('y-m-d', StrToTime("Next Sunday")),
+            'week_number' => date('W'),
+            'all_filled_up' => false
         ));
     }
 

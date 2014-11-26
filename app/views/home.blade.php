@@ -25,9 +25,5 @@
 @stop
 
 @section('content')
-{{ //Im just starting with  a date
-$my_date = '2004-01-12';}}
-
-{{//First : Convert the date to time
-$my_time = strtotime($my_date); }}
+    {{ date('W') }}
 @stop

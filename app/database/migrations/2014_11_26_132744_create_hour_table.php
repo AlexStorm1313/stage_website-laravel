@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDayTable extends Migration {
+class CreateHourTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,13 @@ class CreateDayTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('day', function(Blueprint $table)
+		Schema::create('hour', function(Blueprint $table)
 		{
 			$table->increments('id');
 
-			$table->integer('week_number');
-			$table->boolean('all_filled');
 			$table->date('date_of_day');
+			$table->date('hour_of_day');
+			$table->string('the_log');
 
 			$table->timestamps();
 		});
@@ -31,7 +31,7 @@ class CreateDayTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('day');
+		Schema::drop('hour');
 	}
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-class WeekController extends \BaseController {
+class HourController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,7 @@ class WeekController extends \BaseController {
 	 */
 	public function index()
 	{
-		return Response::json(Week::get());
+		//
 	}
 
 
@@ -20,7 +20,7 @@ class WeekController extends \BaseController {
 	 */
 	public function create()
 	{
-
+		//
 	}
 
 
@@ -31,16 +31,7 @@ class WeekController extends \BaseController {
 	 */
 	public function store()
 	{
-		Week::create(array(
-			'week_number' => date('W'),
-			'date_created' => date('Y-m-d'),
-			'date_completed' => '0000-00-00',
-			'completed' => false,
-			'can_be_completed' => date('Y-m-d', StrToTime("Next Sunday")),
-			'all_filled_up' => false
-		));
-
-		return Response::json(array('success' => true));
+		//
 	}
 
 
@@ -64,16 +55,7 @@ class WeekController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$week = Week::findOrFail($id);
-		if (strtotime(Date('y-m-d')) > strtotime($week->can_be_completed)) {
-			$week->completed = true;
-			$week->date_completed = date('Y-m-d');
-			$week->save();
-			return Response::json(array('success' => true));
-		}else {
-			return Response::json(array('success' => false));
-		}
-
+		//
 	}
 
 
@@ -97,8 +79,7 @@ class WeekController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Week::destroy($id);
-		return Response::json(array('success' => true));
+		//
 	}
 
 

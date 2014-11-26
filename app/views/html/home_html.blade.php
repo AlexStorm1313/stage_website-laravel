@@ -45,7 +45,6 @@
   <script src="{{ URL::asset('//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/angular.min.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/logApp.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/controllers/mainCtrl.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset('js/services/weekService.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset(weekCtrl.js) }}"weekCtrl.js  <script type="text/javascript" src="{{ URL::asset('js/services/weekService.js') }}"></script>
   </body>
 </html>

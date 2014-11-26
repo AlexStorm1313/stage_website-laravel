@@ -16,8 +16,10 @@ class CreateWeekTable extends Migration {
 		{
 			$table->increments('id');
 
-			$table->datel('date_created');
+			$table->integer('week_number');
+			$table->date('date_created');
 			$table->date('can_be_completed');
+			$table->boolean('all_filled_up');
 			$table->date('date_completed');
 			$table->boolean('completed');
 
