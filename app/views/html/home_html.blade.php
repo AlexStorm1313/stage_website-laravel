@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Alex Brasser</title>
+    <title>Home - Alex Brasser</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Lobster' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{{ URL::asset('css/reset.css') }}">
@@ -45,6 +45,7 @@
   <script src="{{ URL::asset('//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/angular.min.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/logApp.js') }}"></script>
-  <script type="text/javascript" src="{{ URL::asset(weekCtrl.js) }}"weekCtrl.js  <script type="text/javascript" src="{{ URL::asset('js/services/weekService.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/controllers/weekCtrl.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/services/weekService.js') }}"></script>
   </body>
 </html>

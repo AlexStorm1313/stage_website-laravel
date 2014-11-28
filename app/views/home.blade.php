@@ -25,5 +25,4 @@
 @stop
 
 @section('content')
-    {{ date('W') }}
 @stop
