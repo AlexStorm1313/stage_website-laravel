@@ -34,6 +34,7 @@ class WeekController extends \BaseController
     {
         $currentWeek = date('W');
         $currentYear = date('Y');
+        $currentDate = date('Y-m-d');
         $filtered = Week::all()->filter(function ($week) use ($currentWeek, $currentYear) {
             return (int) $week->week_number === (int) $currentWeek && (int) $week->date_year === (int) $currentYear;
             //return (int) $week->week_number === $currentWeek && (int) $week->year === $currentYear;
@@ -46,16 +47,16 @@ class WeekController extends \BaseController
         $week = Week::create(array(
             'week_number' => $currentWeek,
             'date_year' => $currentYear,
-            'date_created' => date('Y-m-d'),
+            'date_created' => $currentDate,
             'date_completed' => '0000-00-00',
             'completed' => false,
-            'can_be_completed' => date('Y-m-d', StrToTime("Next Sunday")),
+            'can_be_completed' => $currentDate, StrToTime("Next Sunday"),
             'all_filled_up' => false
         ));
         Day::create(array(
             'week_number' => $currentWeek,
             'all_filled' => false,
-            'date_of_day' => date('Y-m-d')
+            'date_of_day' => $currentDate
         ));
 
         return Response::json(array('success' => true, 'week' => $week->toArray()));
@@ -82,10 +83,11 @@ class WeekController extends \BaseController
      */
     public function edit($id)
     {
+        $currentDate = date('Y-m-d');
         $week = Week::findOrFail($id);
-        if (strtotime(Date('y-m-d')) > strtotime($week->can_be_completed)) {
+        if (strtotime($currentDate) > strtotime($week->can_be_completed) && $week->all_filled_up == true) {
             $week->completed = true;
-            $week->date_completed = date('Y-m-d');
+            $week->date_completed = $currentDate;
             $week->save();
             return Response::json(array('success' => true));
         } else {

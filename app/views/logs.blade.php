@@ -42,6 +42,7 @@
                 <th><span class="glyphicon glyphicon-calendar"></span> Date Created</th>
                 <th><span class="glyphicon glyphicon-calendar"></span> Date Comleted</th>
                 <th><span class="glyphicon glyphicon-ok"></span> Completed</th>
+                <th><span class="glyphicon glyphicon-ok"></span> All filed up</th>
                 <th><span class="glyphicon glyphicon-folder-open"></span> Logs</th>
                 <th><span class="glyphicon glyphicon-ok"></span> Complete</th>
                 <th><span class="glyphicon glyphicon-remove"></span> Delete</th>
@@ -55,6 +56,8 @@
                     <td ng-if="week.date_completed != '0000-00-00'"><% week.date_completed %></td>
                     <td ng-if="week.completed == true">Completed</td>
                     <td ng-if="week.completed == false">Not yet Completed</td>
+                    <td ng-if="week.all_filled_up == true">Yes</td>
+                    <td ng-if="week.all_filled_up == false">No</td>
                     <td><button class="btn btn-primary btn-xs">Open</button></td>
                     <td ng-if="week.completed == true"><button ng-click="completeWeek(week.id)" class="btn btn-primary btn-xs">Completed</button></td>
                     <td ng-if="week.completed == false"><button ng-click="completeWeek(week.id)" class="btn btn-primary btn-xs">Complete</button></td>
