@@ -17,7 +17,7 @@ class CreateHourTable extends Migration {
 			$table->increments('id');
 
 			$table->date('date_of_day');
-			$table->date('hour_of_day');
+			$table->time('hour_of_day');
 			$table->string('the_log');
 
 			$table->timestamps();

@@ -12,7 +12,9 @@ class WeekController extends \BaseController
     {
         return Response::json(Week::get());
     }
-    public function getWeekNumber(){
+
+    public function getWeekNumber()
+    {
         $week_number = Week::get('week_number');
         return Response::json($week_number);
     }
@@ -39,7 +41,7 @@ class WeekController extends \BaseController
         $currentYear = date('Y');
         $currentDate = date('Y-m-d');
         $filtered = Week::all()->filter(function ($week) use ($currentWeek, $currentYear) {
-            return (int) $week->week_number === (int) $currentWeek && (int) $week->date_year === (int) $currentYear;
+            return (int)$week->week_number === (int)$currentWeek && (int)$week->date_year === (int)$currentYear;
             //return (int) $week->week_number === $currentWeek && (int) $week->year === $currentYear;
         });
 
@@ -56,15 +58,20 @@ class WeekController extends \BaseController
             'can_be_completed' => $currentDate, StrToTime("Next Sunday"),
             'all_filled_up' => false
         ));
-        $days = array(strtotime('Monday this week'), strtotime('Tuesday this week'), strtotime('Wednesday this week'),strtotime('Thursday this week'), strtotime('Friday this week'));
-        foreach($days as $day) {
+        $days = array(strtotime('Monday this week'), strtotime('Tuesday this week'), strtotime('Wednesday this week'), strtotime('Thursday this week'), strtotime('Friday this week'));
+        foreach ($days as $day) {
             Day::create(array(
                 'week_number' => $currentWeek,
                 'all_filled' => false,
-                'date_of_day' => date( "Y-m-d",$day)
+                'date_of_day' => date("Y-m-d", $day)
             ));
         }
-
+        $hours = array(date('00:00:00'), date('01:00:00'), date('02:00:00'), date('03:00:00'), date('04:00:00'), date('05:00:00'), date('06:00:00'), date('07:00:00'), date('08:00:00'), date('09:00:00'), date('10:00:00'), date('11:00:00'), date('12:00:00'), date('13:00:00'), date('13:00:00'), date('14:00:00'), date('15:00:00'), date('16:00:00'), date('17:00:00'), date('18:00:00'), date('19:00:00'), date('20:00:00'), date('21:00:00'), date('22:00:00'),date('23:00:00'));
+        foreach($hours as $hour){
+            Hour::create(array(
+                'hour_of_day' => $hour
+            ));
+        }
         return Response::json(array('success' => true, 'week' => $week->toArray()));
     }
 
