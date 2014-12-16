@@ -27,15 +27,15 @@
 @section('content')
     <div style="margin-bottom: 150px;" ng-app="logApp" ng-controller="weekController">
         <div style="width: 125px" class="input-group pull-right">
-            <input ng-model="searchWeek.week_number" style="height: 36px;" type="number" class="form-control">
-            <span class="input-group-addon"> <button class="btn btn-primary btn-xs">Week</button></span>
+            <input   ng-value="weekNumber"  style="height: 36px;" type="number" class="form-control">
+            <span class="input-group-addon"> <button ng-click="getWeekNumber()" class="btn btn-primary btn-xs">Week</button></span>
         </div>
         <div style="width: 125px" class="input-group pull-right">
             <input style="height: 36px;" type="date" class="form-control">
             <span class="input-group-addon"> <button class="btn btn-primary btn-xs">Date</button></span>
         </div>
         <table class="table table-striped">
-            <h2>Weeks</h2>
+            <h2>Weeks {{Input::get('week')}}</h2>
             <thead>
             <tr>
                 <th><span class="glyphicon glyphicon-calendar"></span> Week number</th>

@@ -21,7 +21,7 @@ angular.module('weekService', [])
                 });
             },
 
-            complete : function (id){
+            complete: function (id) {
                 return $http({
                     method: 'GET',
                     url: '/api/weeks/' + id + '/edit',
@@ -29,6 +29,15 @@ angular.module('weekService', [])
                     data: $.param(id)
                 });
             },
+
+            /*searchWeek: function (week_number) {
+                return $http({
+                    method: 'GET',
+                    url: 'api/weeks/' + week_number + '/search_week',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(week_number)
+                });
+            },*/
 
             // destroy a week
             destroy: function (id) {

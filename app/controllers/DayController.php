@@ -29,7 +29,7 @@ class DayController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store($currentWeek)
 	{
 		//
 	}

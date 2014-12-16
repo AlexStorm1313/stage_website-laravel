@@ -12,7 +12,10 @@ class WeekController extends \BaseController
     {
         return Response::json(Week::get());
     }
-
+    public function getWeekNumber(){
+        $week_number = Week::get('week_number');
+        return Response::json($week_number);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -53,11 +56,14 @@ class WeekController extends \BaseController
             'can_be_completed' => $currentDate, StrToTime("Next Sunday"),
             'all_filled_up' => false
         ));
-        Day::create(array(
-            'week_number' => $currentWeek,
-            'all_filled' => false,
-            'date_of_day' => $currentDate
-        ));
+        $days = array(strtotime('Monday this week'), strtotime('Tuesday this week'), strtotime('Wednesday this week'),strtotime('Thursday this week'), strtotime('Friday this week'));
+        foreach($days as $day) {
+            Day::create(array(
+                'week_number' => $currentWeek,
+                'all_filled' => false,
+                'date_of_day' => date( "Y-m-d",$day)
+            ));
+        }
 
         return Response::json(array('success' => true, 'week' => $week->toArray()));
     }
@@ -117,9 +123,9 @@ class WeekController extends \BaseController
      */
     public function destroy($id)
     {
+        $week = Week::findOrFail($id)->week_number;
+        Day::where('week_number', '=', $week)->delete();
         Week::destroy($id);
         return Response::json(array('success' => true));
     }
-
-
 }

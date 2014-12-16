@@ -11,33 +11,45 @@ angular.module('mainCtrl', [])
                 $scope.loading = false;
             });
 
-        $scope.createWeek = function() {
+        $scope.createWeek = function () {
             $scope.loading = true;
             Week.save($scope.weekData)
-                .success(function(data) {
+                .success(function (data) {
                     Week.get()
-                        .success(function(getData) {
+                        .success(function (getData) {
                             $scope.weeks = getData;
                             $scope.loading = false;
                         });
 
                 })
-                .error(function(data) {
+                .error(function (data) {
                     console.log(data);
                 });
         };
 
-        $scope.completeWeek = function(id){
+        $scope.completeWeek = function (id) {
             $scope.loading = true;
             Week.complete(id)
-                .success(function(data){
+                .success(function (data) {
                     Week.get()
-                        .success(function (data){
+                        .success(function (data) {
                             $scope.weeks = data;
                             $scope.loading = false;
                         });
                 });
         };
+
+        /*$scope.searchWeek = function (week_number) {
+            $scope.loading = true;
+            Week.searchWeek(week_number)
+                .success(function (data) {
+                    Week.get()
+                        .success(function (data) {
+                            $scope.weeks = data;
+                            $scope.loading = false;
+                        });
+                });
+        };*/
 
         $scope.deleteWeek = function (id) {
             $scope.loading = true;
