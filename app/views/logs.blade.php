@@ -27,8 +27,9 @@
 @section('content')
     <div style="margin-bottom: 150px;" ng-app="logApp" ng-controller="weekController">
         <div style="width: 125px" class="input-group pull-right">
-            <input   ng-value="weekNumber"  style="height: 36px;" type="number" class="form-control">
-            <span class="input-group-addon"> <button ng-click="getWeekNumber()" class="btn btn-primary btn-xs">Week</button></span>
+            <input ng-value="weekNumber" style="height: 36px;" type="number" class="form-control">
+            <span class="input-group-addon"> <button ng-click="getWeekNumber()" class="btn btn-primary btn-xs">Week
+                </button></span>
         </div>
         <div style="width: 125px" class="input-group pull-right">
             <input style="height: 36px;" type="date" class="form-control">
@@ -49,20 +50,28 @@
             </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="week in weeks | filter:searchWeek">
-                    <td><% week.week_number %></td>
-                    <td><% week.date_created %></td>
-                    <td ng-if="week.date_completed == '0000-00-00'">Not yet completed</td>
-                    <td ng-if="week.date_completed != '0000-00-00'"><% week.date_completed %></td>
-                    <td ng-if="week.completed == true">Completed</td>
-                    <td ng-if="week.completed == false">Not yet Completed</td>
-                    <td ng-if="week.all_filled_up == true">Yes</td>
-                    <td ng-if="week.all_filled_up == false">No</td>
-                    <td><button class="btn btn-primary btn-xs">Open</button></td>
-                    <td ng-if="week.completed == true"><button ng-click="completeWeek(week.id)" class="btn btn-primary btn-xs">Completed</button></td>
-                    <td ng-if="week.completed == false"><button ng-click="completeWeek(week.id)" class="btn btn-primary btn-xs">Complete</button></td>
-                    <td><button ng-click="deleteWeek(week.id)" class="btn btn-primary btn-xs">Delete</button></td>
-                </tr>
+            <tr ng-repeat="week in weeks | filter:searchWeek">
+                <td><% week.week_number %></td>
+                <td><% week.date_created %></td>
+                <td ng-if="week.date_completed == '0000-00-00'">Not yet completed</td>
+                <td ng-if="week.date_completed != '0000-00-00'"><% week.date_completed %></td>
+                <td ng-if="week.completed == true">Completed</td>
+                <td ng-if="week.completed == false">Not yet Completed</td>
+                <td ng-if="week.all_filled_up == true">Yes</td>
+                <td ng-if="week.all_filled_up == false">No</td>
+                <td>
+                    <button class="btn btn-primary btn-xs">Open</button>
+                </td>
+                <td ng-if="week.completed == true">
+                    <button ng-click="completeWeek(week.id)" class="btn btn-primary btn-xs">Completed</button>
+                </td>
+                <td ng-if="week.completed == false">
+                    <button ng-click="completeWeek(week.id)" class="btn btn-primary btn-xs">Complete</button>
+                </td>
+                <td>
+                    <button ng-click="deleteWeek(week.id)" class="btn btn-primary btn-xs">Delete</button>
+                </td>
+            </tr>
             </tbody>
         </table>
         <button ng-click="createWeek()" class="btn btn-primary btn-xl pull-right">Create</button>

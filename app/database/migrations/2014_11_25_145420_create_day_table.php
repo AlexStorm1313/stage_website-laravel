@@ -17,6 +17,7 @@ class CreateDayTable extends Migration {
 			$table->increments('id');
 
 			$table->integer('week_number');
+			$table->integer('date_year');
 			$table->boolean('all_filled');
 			$table->date('date_of_day');
 
