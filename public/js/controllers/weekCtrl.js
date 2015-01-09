@@ -1,4 +1,4 @@
-angular.module('mainCtrl', [])
+angular.module('weekCtrl', [])
 
     // inject the Week service into our controller
     .controller('weekController', function ($scope, $http, Week) {
@@ -38,18 +38,6 @@ angular.module('mainCtrl', [])
                         });
                 });
         };
-
-        /*$scope.searchWeek = function (week_number) {
-            $scope.loading = true;
-            Week.searchWeek(week_number)
-                .success(function (data) {
-                    Week.get()
-                        .success(function (data) {
-                            $scope.weeks = data;
-                            $scope.loading = false;
-                        });
-                });
-        };*/
 
         $scope.deleteWeek = function (id) {
             $scope.loading = true;

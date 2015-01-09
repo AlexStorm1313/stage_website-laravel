@@ -9,5 +9,5 @@ class Hour extends Eloquent
 {
     protected $table = 'hour';
     protected $guarded = array('id');
-    protected $fillable = array('date_of_day', 'hour_of_day', 'the_log');
+    protected $fillable = array('hour_of_day', 'the_log', 'week_id', 'day_id');
 }

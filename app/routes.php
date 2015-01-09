@@ -48,7 +48,7 @@ Route::group(array('prefix' => 'api'), function () {
     Route::resource('weeks', 'WeekController');
     Route::resource('days', 'DayController');
     Route::resource('hours', 'HourController');
-    Route::get('/api/weeks/{week_number}/search_week', array('uses' => 'WeekController@getWeekNumber'));
+    Route::get('days/{week_number}/weekdays', array('uses' => 'DayController@showWeekDays'));
 });
 
 // =============================================

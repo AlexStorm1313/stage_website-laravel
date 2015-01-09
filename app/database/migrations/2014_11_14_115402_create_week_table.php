@@ -14,6 +14,7 @@ class CreateWeekTable extends Migration {
 	{
 		Schema::create('week', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->increments('id');
 
 			$table->integer('week_number');

@@ -47,5 +47,7 @@
   <script type="text/javascript" src="{{ URL::asset('js/logApp.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/controllers/weekCtrl.js') }}"></script>
   <script type="text/javascript" src="{{ URL::asset('js/services/weekService.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/controllers/dayCtrl.js') }}"></script>
+  <script type="text/javascript" src="{{ URL::asset('js/services/dayService.js') }}"></script>
   </body>
 </html>

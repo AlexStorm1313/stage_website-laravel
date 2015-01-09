@@ -14,13 +14,12 @@ class CreateDayTable extends Migration {
 	{
 		Schema::create('day', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->increments('id');
-
-			$table->integer('week_number');
-			$table->integer('date_year');
+			$table->integer('week_id')->unsigned();
+			$table->foreign('week_id')->unsigned()->references('id')->on('week')->onDelete('cascade');
 			$table->boolean('all_filled');
 			$table->date('date_of_day');
-
 			$table->timestamps();
 		});
 	}

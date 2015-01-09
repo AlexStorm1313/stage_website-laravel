@@ -1,58 +1,25 @@
-/**
- * Created by alexstorm13 on 26/11/14.
- */
-angular.module('mainCtrl', [])
+angular.module('dayCtrl', [])
 
     // inject the Week service into our controller
-    .controller('dayController', function ($scope, $http, Week) {
+    .controller('dayController', function ($scope, $http, Day) {
         $scope.dayData = {};
         $scope.loading = true;
 
-        Week.get()
+        /*Day.get()
             .success(function (data) {
-                $scope.weeks = data;
+                $scope.days = data;
                 $scope.loading = false;
             });
+        */
 
-        $scope.createWeek = function() {
+        $scope.showWeekDays = function (week_number) {
             $scope.loading = true;
-            Week.save($scope.weekData)
-                .success(function(data) {
-                    Week.get()
-                        .success(function(getData) {
-                            $scope.weeks = getData;
-                            $scope.loading = false;
-                        });
-
-                })
-                .error(function(data) {
-                    console.log(data);
-                });
-        };
-
-        $scope.completeWeek = function(id){
-            $scope.loading = true;
-            Week.complete(id)
-                .success(function(data){
-                    Week.get()
-                        .success(function (data){
-                            $scope.weeks = data;
-                            $scope.loading = false;
-                        });
-                });
-        };
-
-        $scope.deleteWeek = function (id) {
-            $scope.loading = true;
-            Week.destroy(id)
-                .success(function (data) {
-                    Week.get()
-                        .success(function (data) {
-                            $scope.weeks = data;
-                            $scope.loading = false;
-                        });
-
-                });
+            Day.showWeekDays(week_number)
+                .success(function (data){
+                    $scope.weekdays = data;
+                    $scope.loading = false;
+                }
+            )
         };
 
     });

@@ -8,5 +8,5 @@
 class Week extends Eloquent{
     protected $table = 'week';
     protected $guarded = array('id');
-    protected $fillable = array('date_created', 'date_completed', 'completed', 'can_be_completed', 'week_number', 'all_filled_up', 'date_year');
+    protected $fillable = array('date_created', 'date_completed', 'completed', 'can_be_completed', 'all_filled_up', 'week_id', 'date_year', 'week_number');
 }

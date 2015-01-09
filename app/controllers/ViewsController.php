@@ -58,7 +58,7 @@ class ViewsController extends BaseController
         return View::make('documents')
             ->with('files', $files)
             ->with('dir', $dir)
-            ->with('timestamps', $timestamps);
+            ->with('timestamps',  date("d-m-Y h:i:s",$timestamps));
     }
 
     public function showSettings()
