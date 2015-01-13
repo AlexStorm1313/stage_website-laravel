@@ -10,8 +10,8 @@ class DayController extends \BaseController
      */
     public function index()
     {
-        //$all_days = Day::all();
-        //return $all_days;
+        $all_days = Day::all();
+        return $all_days;
     }
 
     public function showWeekDays($week_number)
@@ -19,9 +19,13 @@ class DayController extends \BaseController
         $week = DB::table('week')->where('week_number', $week_number)->first();
         $weekdays = DB::table('day')->where('week_id', $week->id)->get();
         return Response::json($weekdays);
-
     }
 
+    public function openWeekDays($id)
+    {
+        $days = DB::table('day')->where('week_id', $id)->get();
+        return Response::json($days);
+    }
     /**
      * Show the form for creating a new resource.
      *

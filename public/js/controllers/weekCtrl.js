@@ -38,6 +38,14 @@ angular.module('weekCtrl', [])
                         });
                 });
         };
+        $scope.openWeekDays = function (id) {
+            $scope.loading = true;
+            Week.openWeekDays(id)
+                .success(function (data) {
+                    $scope.openweekdays = data;
+                    $scope.loading = true;
+                });
+        };
 
         $scope.deleteWeek = function (id) {
             $scope.loading = true;

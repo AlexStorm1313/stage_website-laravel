@@ -4,7 +4,6 @@
 angular.module('weekService', [])
 
     .factory('Week', function ($http) {
-
         return {
             // get all the weeks
             get: function () {
@@ -29,10 +28,19 @@ angular.module('weekService', [])
                     data: $.param(id)
                 });
             },
+            openWeekDays: function(id){
+               return $http({
+                    method: 'GET',
+                    url: '/api/days/'+ id +'/openweekdays'
+                });
+            },
+
             // destroy a week
             destroy: function (id) {
                 return $http.delete('/api/weeks/' + id);
             }
-        }
+
+        };
+
 
     });

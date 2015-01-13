@@ -26,17 +26,7 @@
 
 @section('content')
     <div ng-app="logApp">
-        <div style="margin-bottom: 150px;" ng-controller="weekController">
-            <div style="width: 125px" class="input-group pull-right">
-                <input ng-model="week.number" style="height: 36px;" type="number" class="form-control">
-            <span class="input-group-addon"> <button ng-click="showWeekDays(week.number)"
-                                                     class="btn btn-primary btn-xs">Search
-                </button></span>
-            </div>
-            <div style="width: 125px" class="input-group pull-right">
-                <input style="height: 36px;" type="date" class="form-control">
-                <span class="input-group-addon"> <button class="btn btn-primary btn-xs">Date</button></span>
-            </div>
+        <div style="margin-bottom: 150px;" ng-controller="weekController as weekCtrl">
             <table class="table table-striped">
                 <h2>Weeks</h2>
                 <thead>
@@ -62,7 +52,7 @@
                     <td ng-if="week.all_filled_up == true">Yes</td>
                     <td ng-if="week.all_filled_up == false">No</td>
                     <td>
-                        <button class="btn btn-primary btn-xs">Open</button>
+                        <button ng-click="openWeekDays(week.id)" class="btn btn-primary btn-xs">Open</button>
                     </td>
                     <td ng-if="week.completed == true">
                         <button ng-click="completeWeek(week.id)" class="btn btn-primary btn-xs">Completed</button>
@@ -76,9 +66,17 @@
                 </tr>
                 </tbody>
             </table>
+
+            <div ng-repeat="openweekday in openweekdays">
+                <% openweekday.id %>
+            </div>
             <button ng-click="createWeek()" class="btn btn-primary btn-xl pull-right">Create</button>
         </div>
+
         <div ng-controller="dayController">
+            <div ng-repeat="dump in dumps">
+                <% dump.id %>
+            </div>
             <div style="width: 125px" class="input-group pull-right">
                 <input ng-model="week.number" style="height: 36px;" type="number" class="form-control">
             <span class="input-group-addon"> <button ng-click="showWeekDays(week.number)"
@@ -99,6 +97,30 @@
                 <tr ng-repeat="weekday in weekdays">
                     <td><% weekday.date_of_day %></td>
                     <td><% weekday.all_filled %></td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div ng-controller="hourController">
+            <div style="width: 125px" class="input-group pull-right">
+                <input ng-model="date_of_day" style="height: 36px;" type="number" class="form-control">
+                <span class="input-group-addon"> <button ng-click="showDayHours(date_of_day)"
+                                                         class="btn btn-primary btn-xs">Date
+                    </button></span>
+            </div>
+            <table class="table table-striped">
+                <h2>Hours of Day <% dayhour.date_of_day %></h2>
+                <% dayhour.id %>
+                <thead>
+                <tr>
+                    <th><span class="glyphicon glyphicon-calendar"></span> Week number</th>
+                    <th><span class="glyphicon glyphicon-calendar"></span> Date Created</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="dayhour in dayhours">
+                    <td><% dayhour.id %></td>
                 </tr>
                 </tbody>
             </table>
