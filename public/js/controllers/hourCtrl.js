@@ -17,8 +17,17 @@ angular.module('hourCtrl', [])
         $scope.showDayHours = function (date_of_day) {
             $scope.loading = true;
             Hour.showDayHours(date_of_day)
-                .success(function (data){
+                .success(function (data) {
                     $scope.dayhours = data;
+                    $scope.loading = false;
+                }
+            )
+        };
+        $scope.updateLog = function (id, log) {
+            $scope.loading = true;
+            Hour.updateLog(id, log)
+                .success(function (data) {
+                    $scope.updatelog = data;
                     $scope.loading = false;
                 }
             )

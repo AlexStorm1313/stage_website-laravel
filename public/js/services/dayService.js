@@ -12,11 +12,16 @@ angular.module('dayService', [])
             },
 
             //Display all days of the chosen week
-            showWeekDays: function(week_number){
+            showWeekDays: function (week_number) {
                 return $http({
                     method: 'GET',
-                    url: '/api/days/'+ week_number +'/weekdays'
+                    url: '/api/days/' + week_number + '/weekdays'
                 });
+            },
+            openWeekDaysFromWeeks: function (id) {
+                $http.get('/api/days/' + id + '/weekdays').
+                    success(function (data, status, headers, config) {
+                    });
             }
         }
 

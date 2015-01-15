@@ -51,6 +51,7 @@ Route::group(array('prefix' => 'api'), function () {
     Route::get('days/{week_number}/weekdays', array('uses' => 'DayController@showWeekDays'));
     Route::get('days/{id}/openweekdays', array('uses' => 'DayController@openWeekDays'));
     Route::get('hours/{date_of_day}/dayhours', array('uses' => 'HourController@showDayHours'));
+    Route::put('hours/{hours}/{log}', array('uses' => 'HourController@update'));
 });
 
 // =============================================

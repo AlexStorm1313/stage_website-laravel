@@ -12,10 +12,18 @@ angular.module('hourService', [])
             },
 
             //Display all days of the chosen week
-            showDayHours: function(date_of_day){
+            showDayHours: function (date_of_day) {
                 return $http({
                     method: 'GET',
-                    url: '/api/hours/'+ date_of_day +'/dayhours'
+                    url: '/api/hours/' + date_of_day + '/dayhours'
+                });
+            },
+            updateLog: function (id, log) {
+                return $http({
+                    method: 'PUT',
+                    url: 'api/hours/' + id + '/' + log,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    data: $.param(id, log)
                 });
             }
         }

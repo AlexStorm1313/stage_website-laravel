@@ -53,7 +53,7 @@ class WeekController extends \BaseController
             'all_filled_up' => false
         ));
         $hours = array(date('00:00:00'), date('01:00:00'), date('02:00:00'), date('03:00:00'), date('04:00:00'), date('05:00:00'), date('06:00:00'), date('07:00:00'), date('08:00:00'), date('09:00:00'), date('10:00:00'), date('11:00:00'), date('12:00:00'), date('13:00:00'), date('13:00:00'), date('14:00:00'), date('15:00:00'), date('16:00:00'), date('17:00:00'), date('18:00:00'), date('19:00:00'), date('20:00:00'), date('21:00:00'), date('22:00:00'), date('23:00:00'));
-        $days = array(strtotime('Monday this week'), strtotime('Tuesday this week'), strtotime('Wednesday this week'), strtotime('Thursday this week'), strtotime('Friday this week'));
+        $days = array(strtotime('Monday this week'), strtotime('Tuesday this week'), strtotime('Wednesday this week'), strtotime('Thursday this week'), strtotime('Friday this week'), strtotime('saturday this week'), strtotime('Sunday this week'));
         foreach ($days as $day) {
             $days = Day::create(array(
                 'week_id' => $week->id,

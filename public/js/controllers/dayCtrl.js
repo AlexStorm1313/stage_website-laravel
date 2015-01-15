@@ -19,5 +19,14 @@ angular.module('dayCtrl', [])
                 }
             )
         };
+        $scope.openWeekDaysFromWeeks = function (id) {
+            $scope.loading = true;
+            Day.openWeekDaysFromWeeks(id)
+                .success(function (data) {
+                    $scope.dumps = data;
+                    $scope.loading = false;
+                }
+            )
+        };
 
     });

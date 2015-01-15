@@ -36,7 +36,7 @@
                     <th><span class="glyphicon glyphicon-calendar"></span> Date Comleted</th>
                     <th><span class="glyphicon glyphicon-ok"></span> Completed</th>
                     <th><span class="glyphicon glyphicon-ok"></span> All filed up</th>
-                    <th><span class="glyphicon glyphicon-folder-open"></span> Logs</th>
+                    <th><span class="glyphicon glyphicon-folder-open"></span> Show days</th>
                     <th><span class="glyphicon glyphicon-ok"></span> Complete</th>
                     <th><span class="glyphicon glyphicon-remove"></span> Delete</th>
                 </tr>
@@ -44,7 +44,7 @@
                 <tbody>
                 <tr ng-repeat="week in weeks">
                     <td><% week.week_number %></td>
-                    <td><% week.date_created %></td>
+                    <td><% week.date_created | date:"dd-MM-yyyy" %></td>
                     <td ng-if="week.date_completed == '0000-00-00'">Not yet completed</td>
                     <td ng-if="week.date_completed != '0000-00-00'"><% week.date_completed %></td>
                     <td ng-if="week.completed == true">Completed</td>
@@ -74,53 +74,64 @@
         </div>
 
         <div ng-controller="dayController">
-            <div ng-repeat="dump in dumps">
-                <% dump.id %>
-            </div>
-            <div style="width: 125px" class="input-group pull-right">
+            <div style="width: 250px" class="input-group pull-right">
                 <input ng-model="week.number" style="height: 36px;" type="number" class="form-control">
-            <span class="input-group-addon"> <button ng-click="showWeekDays(week.number)"
-                                                     class="btn btn-primary btn-xs">Search
+            <span style="width: 75px;" class="input-group-addon"> <button ng-click="showWeekDays(week.number)"
+                                                                          class="btn btn-primary btn-xs">Search
                 </button></span>
             </div>
             <table class="table table-striped">
-                <% weekday | json %>
                 <h2>Days of week <% week.number %></h2>
-                <% day.id %>
                 <thead>
                 <tr>
-                    <th><span class="glyphicon glyphicon-calendar"></span> Week number</th>
-                    <th><span class="glyphicon glyphicon-calendar"></span> Date Created</th>
+                    <th><span class="glyphicon glyphicon-calendar"></span> Date of day</th>
+                    <th><span class="glyphicon glyphicon-filter"></span> All filled</th>
+                    <th><span class="glyphicon glyphicon-folder-open"></span> Show hours</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="weekday in weekdays">
-                    <td><% weekday.date_of_day %></td>
+                    <td><% weekday.date_of_day | date:"dd-MM-yyyy" %></td>
                     <td><% weekday.all_filled %></td>
                 </tr>
-
                 </tbody>
             </table>
         </div>
         <div ng-controller="hourController">
-            <div style="width: 125px" class="input-group pull-right">
-                <input ng-model="date_of_day" style="height: 36px;" type="number" class="form-control">
-                <span class="input-group-addon"> <button ng-click="showDayHours(date_of_day)"
-                                                         class="btn btn-primary btn-xs">Date
-                    </button></span>
+            <div>
+                <div style="color: #ff0000; margin-top: 0px;" class="pull-right"><% dayhours.message %></div>
+                <div style="float: right; width: 250px;" class="input-group pull-right"><input ng-model="date.of.day"
+                                                                                 style="height: 36px;" type="text"
+                                                                                 class="datepicker form-control"><span
+                            style="margin-top:50px; width: 75px;" class="input-group-addon"> <button ng-click="showDayHours(date.of.day)"
+                                                                                    class="btn btn-primary btn-xs">Date
+                        </button></span>
+                </div>
+
             </div>
+            <script>
+                $('.datepicker').datepicker({
+                    format: 'dd-mm-yyyy',
+                    todayBtn: true,
+                    todayHighlight: true,
+                    weekStart: 1,
+                    autoclose: true
+                });
+            </script>
             <table class="table table-striped">
-                <h2>Hours of Day <% dayhour.date_of_day %></h2>
-                <% dayhour.id %>
+                <h2>Hours of Day <% date.of.day %></h2>
                 <thead>
                 <tr>
-                    <th><span class="glyphicon glyphicon-calendar"></span> Week number</th>
-                    <th><span class="glyphicon glyphicon-calendar"></span> Date Created</th>
+                    <th><span class="glyphicon glyphicon-calendar"></span> Hour of the day</th>
+                    <th><span class="glyphicon glyphicon-book"></span> The Log</th>
+                    <th><span class="glyphicon glyphicon-floppy-disk"></span> Save</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="dayhour in dayhours">
-                    <td><% dayhour.id %></td>
+                <tr ng-if="dayhours !== null" ng-repeat="dayhour in dayhours">
+                    <td><% dayhour.hour_of_day %></td>
+                    <td><textarea ng-model="hour.log" style="height: 125px;margin-left: -250px; margin-right:-250px; width: 350px;" value="<% dayhour.the_log %>"></textarea></td>
+                    <td> <button ng-click="updateLog(dayhour.id, hour.log)" class="btn btn-primary btn-xs">Save</button></td>
                 </tr>
                 </tbody>
             </table>

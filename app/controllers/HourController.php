@@ -15,11 +15,22 @@ class HourController extends \BaseController
 
     public function showDayHours($date_of_day)
     {
-        /* $day = DB::table('day')->where('date_of_day', $date_of_day)->first();
-        $dayhours = DB::table('hour')->where('day_id', $day->id)->get();
-        return Response::json($dayhours);
-        */
-        return Response::Json($date_of_day);
+        $message = array('Fail');
+        $unix_time = strtotime($date_of_day);
+        if($unix_time != false){
+            $date = date('Y-m-d', $unix_time);
+            if($day = DB::table('day')->where('date_of_day', $date)->first()){
+                $dayhours = DB::table('hour')->where('day_id', $day->id)->get();
+                return Response::json($dayhours);
+            }else{
+                return Response::json(array('message' => 'Ik kan niks vinden'));
+            }
+
+        }else{
+            return Response::json(array('message' => 'Ik ga op mijn bek'));
+        }
+
+
     }
 
     /**
@@ -72,11 +83,12 @@ class HourController extends \BaseController
      * Update the specified resource in storage.
      *
      * @param  int $id
+     * @param  string $log
      * @return Response
      */
-    public function update($id)
+    public function update($id, $log)
     {
-        //
+        return Response::json(array('log' => $log));
     }
 
 

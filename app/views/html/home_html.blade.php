@@ -5,13 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home - Alex Brasser</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Lobster' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ URL::asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/home.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/animate.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap-datetimepicker.min.css') }}">
-    <script src="{{ URL::asset('/js/bootstrap-datetimepicker.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ URL::asset('css/datepicker.css') }}">
+    <script type="text/javascript"
+            src="{{ URL::asset('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ URL::asset('//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/bootstrap-datepicker.js') }}"></script>
     <base href="/">
 </head>
 <header>
@@ -39,14 +43,12 @@
       <span class="navbar-text">
       Copyright &copy;
           <script type="text/javascript">
-              var d = new Date()
+              var d = new Date();
               document.write(d.getFullYear())
-          </script>. Site Designed by <a href="http://www.alexbrasser.nl">Alex Brasser</a>. All Rights Reserved.
+          </script>. Site Created by <a href="http://www.alexbrasser.nl">Alex Brasser</a>. All Rights Reserved.
       </span>
     </div>
 </div>
-<script src="{{ URL::asset('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js') }}"></script>
-<script src="{{ URL::asset('//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/angular.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/logApp.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/controllers/weekCtrl.js') }}"></script>
