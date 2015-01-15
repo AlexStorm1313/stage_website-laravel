@@ -88,6 +88,9 @@ class HourController extends \BaseController
      */
     public function update($id, $log)
     {
+        $field = Hour::findOrFail($id);
+        $field->the_log = $log;
+        $field->save();
         return Response::json(array('log' => $log));
     }
 

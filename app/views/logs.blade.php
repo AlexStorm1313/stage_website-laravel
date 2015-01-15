@@ -130,7 +130,7 @@
                 <tbody>
                 <tr ng-if="dayhours !== null" ng-repeat="dayhour in dayhours">
                     <td><% dayhour.hour_of_day %></td>
-                    <td><textarea ng-model="hour.log" style="height: 125px;margin-left: -250px; margin-right:-250px; width: 350px;" value="<% dayhour.the_log %>"></textarea></td>
+                    <td><textarea ng-model="hour.log" style="height: 125px;margin-left: -250px; margin-right:-250px; width: 350px;" placeholder="<% dayhour.the_log %>"></textarea></td>
                     <td> <button ng-click="updateLog(dayhour.id, hour.log)" class="btn btn-primary btn-xs">Save</button></td>
                 </tr>
                 </tbody>
