@@ -4,5 +4,5 @@ var logApp = angular.module('logApp', ['weekCtrl', 'weekService', 'dayService', 
 })
 
 .factory('Data', function () {
-    return { FirstName: '' };
+    return { openWeekDays: '' };
 });

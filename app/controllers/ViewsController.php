@@ -58,7 +58,7 @@ class ViewsController extends BaseController
         return View::make('documents')
             ->with('files', $files)
             ->with('dir', $dir)
-            ->with('timestamps',  date("d-m-Y h:i:s",$timestamps));
+            ->with('timestamps', date("d-m-Y h:i:s", $timestamps));
     }
 
     public function showSettings()
@@ -66,12 +66,15 @@ class ViewsController extends BaseController
         return View::make('settings');
     }
 
-    public function delete($file){
-        File::delete('public/uploads/documents/'.$file);
+    public function delete($file)
+    {
+        File::delete('public/uploads/documents/' . $file);
         return Redirect::to('documents');
     }
+
     public function showSetPassword()
     {
         return View::make('setPassword');
     }
+
 }
