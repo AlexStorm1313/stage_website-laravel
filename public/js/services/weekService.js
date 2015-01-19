@@ -28,10 +28,10 @@ angular.module('weekService', [])
                     data: $.param(id)
                 });
             },
-            openWeekDays: function(id){
-               return $http({
+            openWeekDays: function (id) {
+                return $http({
                     method: 'GET',
-                    url: '/api/days/'+ id +'/openweekdays'
+                    url: '/api/days/' + id + '/openweekdays'
                 });
             },
 
