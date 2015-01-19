@@ -105,7 +105,7 @@
                                                                                                class="datepicker form-control"><span
                             style="margin-top:50px; width: 75px;" class="input-group-addon"> <button
                                 ng-click="showDayHours(date.of.day)"
-                                class="btn btn-primary btn-xs">Date
+                                class="btn btn-primary btn-xs">Search
                         </button></span>
                 </div>
 
