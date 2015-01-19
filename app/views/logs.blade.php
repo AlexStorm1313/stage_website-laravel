@@ -27,6 +27,8 @@
 @section('content')
     <div ng-app="logApp">
         <div style="margin-bottom: 150px;" ng-controller="weekController">
+            <input type="text" ng-model="Data.FirstName">
+            <br>Input is : <strong><% Data.FirstName %></strong>
             <table class="table table-striped">
                 <h2>Weeks</h2>
                 <thead>
@@ -70,6 +72,7 @@
         </div>
 
         <div ng-controller="dayController">
+            Input should also be here: <% Data.FirstName %>
             <div style="width: 250px" class="input-group pull-right">
                 <input ng-model="week.number" style="height: 36px;" type="number" class="form-control">
             <span style="width: 75px;" class="input-group-addon"> <button ng-click="showWeekDays(week.number)"

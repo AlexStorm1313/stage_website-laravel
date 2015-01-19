@@ -1,10 +1,10 @@
 angular.module('weekCtrl', [])
 
 // inject the Week service into our controller
-    .controller('weekController', function ($scope, $http, Week) {
+    .controller('weekController', function ($scope, $http, Week, Data) {
         $scope.weekData = {};
         $scope.loading = true;
-        $scope.Week = Week;
+        $scope.Data = Data;
 
         Week.get()
             .success(function (data) {
