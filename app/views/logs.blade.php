@@ -66,14 +66,10 @@
                 </tr>
                 </tbody>
             </table>
-
-            <div ng-repeat="openweekday in openweekdays">
-                <% openweekday.id %>
-            </div>
             <button ng-click="createWeek()" class="btn btn-primary btn-xl pull-right">Create</button>
         </div>
 
-        <div ng-controller="dayController">
+        <div ng-controller="dayController">q
             <div style="width: 250px" class="input-group pull-right">
                 <input ng-model="week.number" style="height: 36px;" type="number" class="form-control">
             <span style="width: 75px;" class="input-group-addon"> <button ng-click="showWeekDays(week.number)"
