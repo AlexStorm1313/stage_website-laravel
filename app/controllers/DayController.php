@@ -26,6 +26,7 @@ class DayController extends \BaseController
         $days = DB::table('day')->where('week_id', $id)->get();
         return Response::json($days);
     }
+
     /**
      * Show the form for creating a new resource.
      *

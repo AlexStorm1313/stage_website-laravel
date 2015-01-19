@@ -26,7 +26,7 @@
 
 @section('content')
     <div ng-app="logApp">
-        <div style="margin-bottom: 150px;" ng-controller="weekController as weekCtrl">
+        <div style="margin-bottom: 150px;" ng-controller="weekController">
             <table class="table table-striped">
                 <h2>Weeks</h2>
                 <thead>
@@ -93,6 +93,9 @@
                 <tr ng-repeat="weekday in weekdays">
                     <td><% weekday.date_of_day | date:"dd-MM-yyyy" %></td>
                     <td><% weekday.all_filled %></td>
+                    <td>
+                        <button ng-click="updateLog(dayhour.id, hour.log)" class="btn btn-primary btn-xs">Open</button>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -101,10 +104,12 @@
             <div>
                 <div style="color: #ff0000; margin-top: 0px;" class="pull-right"><% dayhours.message %></div>
                 <div style="float: right; width: 250px;" class="input-group pull-right"><input ng-model="date.of.day"
-                                                                                 style="height: 36px;" type="text"
-                                                                                 class="datepicker form-control"><span
-                            style="margin-top:50px; width: 75px;" class="input-group-addon"> <button ng-click="showDayHours(date.of.day)"
-                                                                                    class="btn btn-primary btn-xs">Date
+                                                                                               style="height: 36px;"
+                                                                                               type="text"
+                                                                                               class="datepicker form-control"><span
+                            style="margin-top:50px; width: 75px;" class="input-group-addon"> <button
+                                ng-click="showDayHours(date.of.day)"
+                                class="btn btn-primary btn-xs">Date
                         </button></span>
                 </div>
 
@@ -130,8 +135,12 @@
                 <tbody>
                 <tr ng-if="dayhours !== null" ng-repeat="dayhour in dayhours">
                     <td><% dayhour.hour_of_day %></td>
-                    <td><textarea ng-model="hour.log" style="height: 125px;margin-left: -250px; margin-right:-250px; width: 350px;" placeholder="<% dayhour.the_log %>"></textarea></td>
-                    <td> <button ng-click="updateLog(dayhour.id, hour.log)" class="btn btn-primary btn-xs">Save</button></td>
+                    <td><textarea ng-model="hour.log"
+                                  style="height: 125px;margin-left: -250px; margin-right:-250px; width: 350px;"
+                                  placeholder="<% dayhour.the_log %>"></textarea></td>
+                    <td>
+                        <button ng-click="updateLog(dayhour.id, hour.log)" class="btn btn-primary btn-xs">Save</button>
+                    </td>
                 </tr>
                 </tbody>
             </table>

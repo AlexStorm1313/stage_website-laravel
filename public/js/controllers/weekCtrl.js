@@ -1,9 +1,10 @@
 angular.module('weekCtrl', [])
 
-    // inject the Week service into our controller
+// inject the Week service into our controller
     .controller('weekController', function ($scope, $http, Week) {
         $scope.weekData = {};
         $scope.loading = true;
+        $scope.Week = Week;
 
         Week.get()
             .success(function (data) {
@@ -59,5 +60,6 @@ angular.module('weekCtrl', [])
 
                 });
         };
+
 
     });

@@ -49,7 +49,10 @@
       </span>
     </div>
 </div>
-<script type="text/javascript" src="{{ URL::asset('js/angular.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ URL::asset('//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular.js') }}"></script>
+<script type="text/javascript"
+        src="{{ URL::asset('//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular-route.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/logApp.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/controllers/weekCtrl.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('js/services/weekService.js') }}"></script>
