@@ -75,7 +75,14 @@
             <span style="width: 75px;" class="input-group-addon"> <button ng-click="showWeekDays(week.number)"
                                                                           class="btn btn-primary btn-xs">Search
                 </button></span>
+
                 </div>
+                <button ng-click="reset = 'true'"
+                        class="btn btn-primary btn-xs">Open
+                </button>
+                <button ng-click="reset = 'false'"
+                        class="btn btn-primary btn-xs">Number
+                </button>
                 <table class="table table-striped">
                     <h2>Days of week <% week.number %></h2>
                     <thead>
@@ -85,8 +92,8 @@
                         <th><span class="glyphicon glyphicon-folder-open"></span> Show hours</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr ng-repeat="openweekday in openweekdays">
+                    <tbody ng-switch="reset">
+                    <tr ng-switch-when="true" ng-repeat="openweekday in openweekdays">
                         <td><% openweekday.date_of_day | date:"dd-MM-yyyy" %></td>
                         <td><% openweekday.all_filled %></td>
                         <td>
@@ -94,7 +101,7 @@
                             </button>
                         </td>
                     </tr>
-                    <tr ng-repeat="weekday in weekdays">
+                    <tr ng-switch-when="false" ng-repeat="weekday in weekdays">
                         <td><% weekday.date_of_day | date:"dd-MM-yyyy" %></td>
                         <td><% weekday.all_filled %></td>
                         <td>
