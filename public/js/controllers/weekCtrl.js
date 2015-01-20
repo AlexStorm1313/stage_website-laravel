@@ -1,10 +1,9 @@
 angular.module('weekCtrl', [])
 
 // inject the Week service into our controller
-    .controller('weekController', function ($scope, $http, Week, Data) {
+    .controller('weekController', function ($scope, $element, $http, Week) {
         $scope.weekData = {};
         $scope.loading = true;
-        $scope.Data = Data;
 
         Week.get()
             .success(function (data) {
@@ -39,13 +38,9 @@ angular.module('weekCtrl', [])
                         });
                 });
         };
+
         $scope.openWeekDays = function (id) {
-            $scope.loading = true;
-            Week.openWeekDays(id)
-                .success(function (data) {
-                    $scope.openweekdays = data;
-                    $scope.loading = true;
-                });
+            $element.next().controller('ngController').openWeekDays(id);
         };
 
         $scope.deleteWeek = function (id) {
