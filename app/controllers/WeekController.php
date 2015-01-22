@@ -4,6 +4,15 @@ class WeekController extends \BaseController
 {
 
     /**
+     * Instantiate a new UserController instance.
+     */
+    public function __construct()
+    {
+       $this->beforeFilter('test', array('except' => array('index', 'store')));
+
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return Response
@@ -77,6 +86,7 @@ class WeekController extends \BaseController
      * Display the specified resource.
      *
      * @param  int $id
+     *
      * @return Response
      */
     public function show($id)
@@ -89,21 +99,21 @@ class WeekController extends \BaseController
      * Show the form for editing the specified resource.
      *
      * @param  int $id
+     *
      * @return Response
      */
     public function edit($id)
     {
         $currentDate = date('Y-m-d');
         $week = Week::findOrFail($id);
-        if (strtotime($currentDate) > strtotime($week->can_be_completed) && $week->all_filled_up == true) {
+        //if (strtotime($currentDate) > strtotime($week->can_be_completed) && $week->all_filled_up == true) {
             $week->completed = true;
             $week->date_completed = $currentDate;
             $week->save();
             return Response::json(array('success' => true));
-        } else {
-            return Response::json(array('success' => false));
-        }
-
+        //} else {
+            //return Response::json(array('success' => false));
+        //}
     }
 
 
@@ -111,9 +121,11 @@ class WeekController extends \BaseController
      * Update the specified resource in storage.
      *
      * @param  int $id
+     *
      * @return Response
      */
-    public function update($id)
+    public
+    function update($id)
     {
         //
     }
@@ -123,9 +135,11 @@ class WeekController extends \BaseController
      * Remove the specified resource from storage.
      *
      * @param  int $id
+     *
      * @return Response
      */
-    public function destroy($id)
+    public
+    function destroy($id)
     {
         Week::destroy($id);
         return Response::json(array('success' => true));

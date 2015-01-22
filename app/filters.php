@@ -90,3 +90,9 @@ Route::filter('boss', function (){
 		return Redirect::to('home');
 	}
 });
+
+Route::filter('test', function (){
+	if(Auth::user()->role !== 'Admin'){
+		return Response::json(array('Admin' => false));
+	}
+});
