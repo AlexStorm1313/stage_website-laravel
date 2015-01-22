@@ -97,7 +97,7 @@
                         <td><% openweekday.date_of_day | date:"dd-MM-yyyy" %></td>
                         <td><% openweekday.all_filled %></td>
                         <td>
-                            <button ng-click="updateLog(dayhour.id, hour.log)" class="btn btn-primary btn-xs">Open
+                            <button ng-click="openDayHours(openweekday.id)" class="btn btn-primary btn-xs">Open
                             </button>
                         </td>
                     </tr>
@@ -105,7 +105,7 @@
                         <td><% weekday.date_of_day | date:"dd-MM-yyyy" %></td>
                         <td><% weekday.all_filled %></td>
                         <td>
-                            <button ng-click="updateLog(dayhour.id, hour.log)" class="btn btn-primary btn-xs">Open
+                            <button ng-click="openDayHours(weekday.id)" class="btn btn-primary btn-xs">Open
                             </button>
                         </td>
                     </tr>
@@ -153,6 +153,16 @@
                                       placeholder="<% dayhour.the_log %>"></textarea></td>
                         <td>
                             <button ng-click="updateLog(dayhour.id, hour.log)" class="btn btn-primary btn-xs">Save
+                            </button>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="opendayhour in opendayhours">
+                        <td><% opendayhour.hour_of_day %></td>
+                        <td><textarea ng-model="hour.log"
+                                      style="height: 125px;margin-left: -250px; margin-right:-250px; width: 350px;"
+                                      placeholder="<% opendayhour.the_log %>"></textarea></td>
+                        <td>
+                            <button ng-click="updateLog(opendayhour.id, hour.log)" class="btn btn-primary btn-xs">Save
                             </button>
                         </td>
                     </tr>

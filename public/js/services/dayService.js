@@ -17,6 +17,12 @@ angular.module('dayService', [])
                     method: 'GET',
                     url: '/api/days/' + week_number + '/weekdays'
                 });
+            },
+            openDayHours: function (id) {
+                return $http({
+                    method: 'GET',
+                    url: '/api/hours/' + id + '/opendayhours'
+                });
             }
         }
 

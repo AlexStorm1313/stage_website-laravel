@@ -33,6 +33,11 @@ class HourController extends \BaseController
 
     }
 
+    public function openDayHours($id){
+        $hours = DB::table('hour')->where('day_id', $id)->get();
+        return Response::json($hours);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

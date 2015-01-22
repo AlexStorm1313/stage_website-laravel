@@ -4,7 +4,7 @@
 angular.module('hourCtrl', [])
 
     // inject the Week service into our controller
-    .controller('hourController', function ($scope, $http, Hour) {
+    .controller('hourController', function ($scope, $http, Hour, Day) {
         $scope.hourData = {};
         $scope.loading = true;
 
@@ -31,6 +31,15 @@ angular.module('hourCtrl', [])
                     $scope.loading = false;
                 }
             )
+        };
+
+        this.openDayHours = function (id) {
+            $scope.loading = true;
+            Day.openDayHours(id)
+                .success(function (data) {
+                    $scope.opendayhours = data;
+                    $scope.loading = true;
+                });
         };
 
     });
