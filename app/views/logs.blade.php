@@ -136,6 +136,12 @@
                         autoclose: true
                     });
                 </script>
+                <button ng-click="reset = 'true'"
+                        class="btn btn-primary btn-xs">Open
+                </button>
+                <button ng-click="reset = 'false'"
+                        class="btn btn-primary btn-xs">Number
+                </button>
                 <table class="table table-striped">
                     <h2>Hours of Day <% date.of.day %></h2>
                     <thead>
@@ -145,8 +151,8 @@
                         <th><span class="glyphicon glyphicon-floppy-disk"></span> Save</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr ng-if="dayhours !== null" ng-repeat="dayhour in dayhours">
+                    <tbody ng-switch="reset">
+                    <tr ng-switch-when="false" ng-repeat="dayhour in dayhours">
                         <td><% dayhour.hour_of_day %></td>
                         <td><textarea ng-model="hour.log"
                                       style="height: 125px;margin-left: -250px; margin-right:-250px; width: 350px;"
@@ -156,7 +162,7 @@
                             </button>
                         </td>
                     </tr>
-                    <tr ng-repeat="opendayhour in opendayhours">
+                    <tr ng-switch-when="true" ng-repeat="opendayhour in opendayhours">
                         <td><% opendayhour.hour_of_day %></td>
                         <td><textarea ng-model="hour.log"
                                       style="height: 125px;margin-left: -250px; margin-right:-250px; width: 350px;"
