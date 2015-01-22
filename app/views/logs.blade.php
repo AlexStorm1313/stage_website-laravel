@@ -78,10 +78,13 @@
 
                 </div>
                 <button ng-click="reset = 'true'"
-                        class="btn btn-primary btn-xs">Open
+                        class="btn btn-primary btn-xs">By Week
                 </button>
                 <button ng-click="reset = 'false'"
-                        class="btn btn-primary btn-xs">Number
+                        class="btn btn-primary btn-xs">By Week Number
+                </button>
+                <button ng-click="reset = 'clear'"
+                        class="btn btn-primary btn-xs">Clear
                 </button>
                 <table class="table table-striped">
                     <h2>Days of week <% week.number %></h2>
@@ -93,7 +96,7 @@
                     </tr>
                     </thead>
                     <tbody ng-switch="reset">
-                    <tr ng-switch-when="true" ng-repeat="openweekday in openweekdays">
+                    <tr ng-hide="reset === 'clear'" ng-switch-when="true" ng-repeat="openweekday in openweekdays">
                         <td><% openweekday.date_of_day | date:"dd-MM-yyyy" %></td>
                         <td><% openweekday.all_filled %></td>
                         <td>
@@ -101,7 +104,7 @@
                             </button>
                         </td>
                     </tr>
-                    <tr ng-switch-when="false" ng-repeat="weekday in weekdays">
+                    <tr ng-hide="reset === 'clear'" ng-switch-when="false" ng-repeat="weekday in weekdays">
                         <td><% weekday.date_of_day | date:"dd-MM-yyyy" %></td>
                         <td><% weekday.all_filled %></td>
                         <td>
@@ -137,13 +140,16 @@
                     });
                 </script>
                 <button ng-click="reset = 'true'"
-                        class="btn btn-primary btn-xs">Open
+                        class="btn btn-primary btn-xs">By Day
                 </button>
                 <button ng-click="reset = 'false'"
-                        class="btn btn-primary btn-xs">Number
+                        class="btn btn-primary btn-xs">By Date
+                </button>
+                <button ng-click="reset = 'clear'"
+                        class="btn btn-primary btn-xs">Clear
                 </button>
                 <table class="table table-striped">
-                    <h2>Hours of Day <% date.of.day %></h2>
+                    <h2>Hours of Day</h2>
                     <thead>
                     <tr>
                         <th><span class="glyphicon glyphicon-calendar"></span> Hour of the day</th>
@@ -152,7 +158,7 @@
                     </tr>
                     </thead>
                     <tbody ng-switch="reset">
-                    <tr ng-switch-when="false" ng-repeat="dayhour in dayhours">
+                    <tr ng-hide="reset === 'clear'" ng-switch-when="false" ng-repeat="dayhour in dayhours">
                         <td><% dayhour.hour_of_day %></td>
                         <td><textarea ng-model="hour.log"
                                       style="height: 125px;margin-left: -250px; margin-right:-250px; width: 350px;"
@@ -162,7 +168,7 @@
                             </button>
                         </td>
                     </tr>
-                    <tr ng-switch-when="true" ng-repeat="opendayhour in opendayhours">
+                    <tr ng-hide="reset === 'clear'" ng-switch-when="true" ng-repeat="opendayhour in opendayhours">
                         <td><% opendayhour.hour_of_day %></td>
                         <td><textarea ng-model="hour.log"
                                       style="height: 125px;margin-left: -250px; margin-right:-250px; width: 350px;"

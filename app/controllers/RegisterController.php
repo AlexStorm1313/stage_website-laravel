@@ -152,7 +152,7 @@ class RegisterController extends \BaseController
             $user->token = null;
             $user->save();
             Mail::send('emails.register.verify', $data, function ($message) use ($user) {
-                $message->to('alexbrasser@gmail.com')->subject('An user wants acces to your site!');
+                $message->to(User::where('role', 'Admin')->pluck('email'))->subject('An user wants acces to your site!');
 
             });
             return View::make('activation');
