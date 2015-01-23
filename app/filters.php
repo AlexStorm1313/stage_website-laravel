@@ -91,8 +91,8 @@ Route::filter('boss', function (){
 	}
 });
 
-Route::filter('test', function (){
-	if(Auth::user()->role !== 'Admin'){
+Route::filter('stage', function (){
+	if(Auth::user()->role !== 'Admin' || Auth::user()->role !== 'Stagebegeleider'){
 		return Response::json(array('Admin' => false));
 	}
 });
