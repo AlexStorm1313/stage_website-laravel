@@ -8,7 +8,7 @@ class WeekController extends \BaseController
      */
     public function __construct()
     {
-       $this->beforeFilter('stage', array('except' => array('index', 'store')));
+       $this->beforeFilter('stage', array('except' => array('index','store')));
 
     }
 

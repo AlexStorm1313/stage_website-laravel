@@ -12,12 +12,12 @@
 */
 
 App::before(function ($request) {
-	//
+    //
 });
 
 
 App::after(function ($request, $response) {
-	//
+    //
 });
 
 /*
@@ -32,18 +32,18 @@ App::after(function ($request, $response) {
 */
 
 Route::filter('auth', function () {
-	if (Auth::guest()) {
-		if (Request::ajax()) {
-			return Response::make('Unauthorized', 401);
-		} else {
-			return Redirect::guest('/');
-		}
-	}
+    if (Auth::guest()) {
+        if (Request::ajax()) {
+            return Response::make('Unauthorized', 401);
+        } else {
+            return Redirect::guest('/');
+        }
+    }
 });
 
 
 Route::filter('auth.basic', function () {
-	return Auth::basic();
+    return Auth::basic();
 });
 
 /*
@@ -58,7 +58,7 @@ Route::filter('auth.basic', function () {
 */
 
 Route::filter('guest', function () {
-	if (Auth::check()) return Redirect::to('/');
+    if (Auth::check()) return Redirect::to('/');
 });
 
 /*
@@ -73,26 +73,28 @@ Route::filter('guest', function () {
 */
 
 Route::filter('csrf', function () {
-	if (Session::token() != Input::get('_token')) {
-		throw new Illuminate\Session\TokenMismatchException;
-	}
+    if (Session::token() != Input::get('_token')) {
+        throw new Illuminate\Session\TokenMismatchException;
+    }
 });
 
 Route::filter('checklogin', function () {
-	if (Auth::user()) {
-		return Redirect::to('home');
-	}
+    if (Auth::user()) {
+        return Redirect::to('home');
+    }
 });
-Route::filter('boss', function (){
-	$array = array('Admin', 'Stagiair');
-	$role = Auth::user()->role;
-	if(!in_array($role, $array)){
-		return Redirect::to('home');
-	}
+Route::filter('boss', function () {
+    $array = array('Admin', 'Stagiair');
+    $role = Auth::user()->role;
+    if (!in_array($role, $array)) {
+        return Redirect::to('home');
+    }
 });
 
-Route::filter('stage', function (){
-	if(Auth::user()->role !== 'Admin' || Auth::user()->role !== 'Stagebegeleider'){
-		return Response::json(array('Admin' => false));
-	}
+Route::filter('stage', function () {
+    if(Auth::user()->role === 'Admin' || Auth::user()->role === 'Stagebegeleider' || Auth::user()->role === 'Stagebegedocent'){
+        true;
+    }else{
+        App::abort(403, 'Not Allowed');
+    }
 });
