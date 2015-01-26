@@ -8,7 +8,7 @@ class WeekController extends \BaseController
      */
     public function __construct()
     {
-       $this->beforeFilter('stage', array('except' => array('index','store')));
+        $this->beforeFilter('stage', array('except' => array('index', 'store')));
 
     }
 
@@ -106,14 +106,14 @@ class WeekController extends \BaseController
     {
         $currentDate = date('Y-m-d');
         $week = Week::findOrFail($id);
-        //if (strtotime($currentDate) > strtotime($week->can_be_completed) && $week->all_filled_up == true) {
+        if (strtotime($currentDate) > strtotime($week->can_be_completed) && $week->all_filled_up == true) {
             $week->completed = true;
             $week->date_completed = $currentDate;
             $week->save();
             return Response::json(array('success' => true));
-        //} else {
-            //return Response::json(array('success' => false));
-        //}
+        } else {
+            return Response::json(array('success' => false));
+        }
     }
 
 
