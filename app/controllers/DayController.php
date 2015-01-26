@@ -36,7 +36,15 @@ class DayController extends \BaseController
     {
         //
     }
-
+    public function checkCompletion($day_id){
+        $hours = Hour::where('day_id', $day_id);
+        foreach($hours as $hour){
+            if($hour->the_log != 'NULL'){
+                Day::where('day_id',$day_id)->all_filled_up = true;
+                Day::where('day_id', $day_id)->save();
+            }
+        }
+    }
 
     /**
      * Store a newly created resource in storage.

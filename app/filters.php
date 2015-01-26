@@ -84,10 +84,10 @@ Route::filter('checklogin', function () {
     }
 });
 Route::filter('boss', function () {
-    $array = array('Admin', 'Stagiair');
-    $role = Auth::user()->role;
-    if (!in_array($role, $array)) {
-        return Redirect::to('home');
+    if(Auth::user()->role === 'Admin'){
+        true;
+    }else{
+        App::abort(403, 'Not Allowed');
     }
 });
 

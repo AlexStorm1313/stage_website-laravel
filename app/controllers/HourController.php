@@ -17,23 +17,24 @@ class HourController extends \BaseController
     {
         $message = array('Fail');
         $unix_time = strtotime($date_of_day);
-        if($unix_time != false){
+        if ($unix_time != false) {
             $date = date('Y-m-d', $unix_time);
-            if($day = DB::table('day')->where('date_of_day', $date)->first()){
+            if ($day = DB::table('day')->where('date_of_day', $date)->first()) {
                 $dayhours = DB::table('hour')->where('day_id', $day->id)->get();
                 return Response::json($dayhours);
-            }else{
+            } else {
                 return Response::json(array('message' => 'Ik kan niks vinden'));
             }
 
-        }else{
+        } else {
             return Response::json(array('message' => 'Ik ga op mijn bek'));
         }
 
 
     }
 
-    public function openDayHours($id){
+    public function openDayHours($id)
+    {
         $hours = DB::table('hour')->where('day_id', $id)->get();
         return Response::json($hours);
     }
@@ -64,6 +65,7 @@ class HourController extends \BaseController
      * Display the specified resource.
      *
      * @param  int $id
+     *
      * @return Response
      */
     public function show($id)
@@ -76,6 +78,7 @@ class HourController extends \BaseController
      * Show the form for editing the specified resource.
      *
      * @param  int $id
+     *
      * @return Response
      */
     public function edit($id)
@@ -87,16 +90,23 @@ class HourController extends \BaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  int $id
+     * @param  int    $id
      * @param  string $log
+     *
      * @return Response
      */
     public function update($id, $log)
     {
         $field = Hour::findOrFail($id);
-        $field->the_log = $log;
-        $field->save();
-        return Response::json(array('log' => $log));
+        $week_id = $field->week_id;
+        $week = Week::where('id', $week_id)->pluck('all_filled_up');
+        if ($week !== 'true') {
+            $field->the_log = $log;
+            $field->save();
+            return Response::json(array('log' => $log) && Redirect::action('DayController@checkCompletion'));
+        } else {
+            return Response::json(array('log' => 'already completed'));
+        }
     }
 
 
@@ -104,6 +114,7 @@ class HourController extends \BaseController
      * Remove the specified resource from storage.
      *
      * @param  int $id
+     *
      * @return Response
      */
     public function destroy($id)

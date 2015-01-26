@@ -32,11 +32,10 @@ Route::get('users/{id}/delete', array('before' => array('auth', 'boss'), 'as' =>
 Route::patch('settings/{id}/update', array('before' => array('auth'), 'as' => 'update_profile', 'uses' => 'UsersController@update_profile'));
 Route::get('logs', array('before' => array('auth'), 'uses' => 'ViewsController@showLogs'));
 Route::get('documents', array('before' => array('auth'), 'uses' => 'ViewsController@showDocuments'));
-Route::post('documents', array('before' => array('auth', 'boss'), 'uses' => 'FileController@store'));
-Route::get('/uploads/documents/{filename}/delete', array('before' => array('auth', 'boss'), 'uses' => 'FileController@delete'));
+Route::post('documents', array('before' => array('auth'), 'uses' => 'FileController@store'));
+Route::get('/uploads/documents/{filename}/delete', array('before' => array('auth'), 'uses' => 'FileController@delete'));
 Route::get('settings', array('before' => array('auth'), 'uses' => 'ViewsController@showSettings'));
 Route::get('settings/{id}/update_password', array('before' => array('auth'), 'as' => 'update_password', 'uses' => 'UsersController@updatePassword'));
-
 // =============================================
 // API ROUTES ==================================
 // =============================================
@@ -53,6 +52,7 @@ Route::group(array('prefix' => 'api'), function () {
     Route::get('hours/{date_of_day}/dayhours', array('uses' => 'HourController@showDayHours'));
     Route::put('hours/{hours}/{log}', array('before' => array('auth'), 'uses' => 'HourController@update'));
     Route::get('hours/{id}/opendayhours', array('before' => array('auth'), 'uses' => 'HourController@openDayHours'));
+    Route::put('checkCompletion', array('before' => array('auth'), 'uses' => 'DayController@checkCompletion'));
 });
 
 // =============================================

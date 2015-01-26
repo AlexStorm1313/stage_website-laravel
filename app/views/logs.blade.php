@@ -4,8 +4,6 @@
         <li class="link-home"><a href="home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
         @if( Auth::user()->role == 'Admin')
             <li class="link-home"><a href="users"><span class="glyphicon glyphicon-user"></span> Users</a></li>@endif
-        @if( Auth::user()->role == 'Stagiair')
-            <li class="link-home"><a href="users"><span class="glyphicon glyphicon-user"></span> Users</a></li>@endif
         <li class="link-home active"><a href="logs"><span class="glyphicon glyphicon-list"></span> Logs</a></li>
         <li class="link-home"><a href="documents"><span class="glyphicon glyphicon-file"></span> Documents</a></li>
         <li class="active dropdown navbar-right link-login">
