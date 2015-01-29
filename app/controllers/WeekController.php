@@ -111,9 +111,16 @@ class WeekController extends \BaseController
             $week->date_completed = $currentDate;
             $week->save();
             return Response::json(array('success' => true));
-        } else {
-            return Response::json(array('success' => false));
+
+        } elseif ($week->all_filled_up == false) {
+            Mail::send('emails.notready', array('key' => 'value'), function ($message) {
+                $message->to('alexbrasser@gmail.com', 'Alex Brasser')->subject('Not completed');
+            });
         }
+        $week->date_completed = '0000-00-00';
+        $week->save();
+        return Response::json(array('success' => false));
+
     }
 
 
