@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ URL::asset('css/home.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/animate.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/datepicker.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/phpmetrics.css') }}">
     <script type="text/javascript"
             src="{{ URL::asset('//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js') }}"></script>
     <script type="text/javascript"
@@ -25,6 +26,7 @@
     <script type="text/javascript" src="{{ URL::asset('js/services/dayService.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/controllers/hourCtrl.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/services/hourService.js') }}"></script>
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <base href="/">
 </head>
 <header>

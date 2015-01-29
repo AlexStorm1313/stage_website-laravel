@@ -90,9 +90,9 @@ Route::filter('boss', function () {
         App::abort(403, 'Not Allowed');
     }
 });
-
+//Auth::user()->role === 'Admin' ||
 Route::filter('stage', function () {
-    if(Auth::user()->role === 'Admin' || Auth::user()->role === 'Stagebegeleider' || Auth::user()->role === 'Stagebegedocent'){
+    if(Auth::user()->role === 'Stagebegeleider' || Auth::user()->role === 'Stagebegedocent'){
         true;
     }else{
         App::abort(403, 'Not Allowed');

@@ -52,7 +52,7 @@ Route::group(array('prefix' => 'api'), function () {
     Route::get('hours/{date_of_day}/dayhours', array('uses' => 'HourController@showDayHours'));
     Route::put('hours/{hours}/{log}', array('before' => array('auth'), 'uses' => 'HourController@update'));
     Route::get('hours/{id}/opendayhours', array('before' => array('auth'), 'uses' => 'HourController@openDayHours'));
-    Route::put('checkCompletion', array('before' => array('auth'), 'uses' => 'DayController@checkCompletion'));
+    Route::any('checkCompletion', array('before' => array('auth'), 'uses' => 'DayController@checkCompletion'));
 });
 
 // =============================================

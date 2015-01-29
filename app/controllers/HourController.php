@@ -98,12 +98,20 @@ class HourController extends \BaseController
     public function update($id, $log)
     {
         $field = Hour::findOrFail($id);
+        $day_id = $field->day_id;
         $week_id = $field->week_id;
         $week = Week::where('id', $week_id)->pluck('all_filled_up');
         if ($week !== 'true') {
             $field->the_log = $log;
             $field->save();
-            return Response::json(array('log' => $log) && Redirect::action('DayController@checkCompletion'));
+            $logs_check = DB::select(DB::raw("SELECT * FROM hour WHERE the_log = '' AND day_id = '$day_id'"));
+            if (empty($logs_check)) {
+                $day = Day::where('id', $day_id)->first();
+                $day->all_filled = true;
+                $day->save();
+            }
+            //return Redirect::action('DayController@checkCompletion', array('day_id' => $day_id));
+            return Response::json(array(array('log' => $log)));
         } else {
             return Response::json(array('log' => 'already completed'));
         }

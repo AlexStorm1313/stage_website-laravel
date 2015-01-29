@@ -1,0 +1,42 @@
+/* ---- relations ---- */
+.node {
+    font: 300 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    fill: #bbb;
+}
+.node:hover {
+    fill: #000;
+}
+.link {
+    stroke: steelblue;
+    stroke-opacity: .4;
+    fill: none;
+    pointer-events: none;
+}
+.node:hover,
+.node--source,
+.node--target {
+    font-weight: 700;
+}
+.node--source {
+    fill: #AE113D;
+}
+.node--target {
+    fill: #4617B4;
+}
+.link--source,
+.link--target {
+    stroke-opacity: 1;
+    stroke-width: 2px;
+}
+.link--source {
+    stroke: #AE113D;
+}
+.link--target {
+    stroke: #4617B4;
+}
+.relation-source {
+    background-color: #AE113D;
+}
+.relation-target {
+    background-color: #4617B4;
+}

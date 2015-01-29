@@ -17,8 +17,15 @@ class DayController extends \BaseController
     public function showWeekDays($week_number)
     {
         $week = DB::table('week')->where('week_number', $week_number)->first();
+        $week_id = $week->id;
         $weekdays = DB::table('day')->where('week_id', $week->id)->get();
-        return Response::json($weekdays);
+        $days_check = DB::select(DB::raw("SELECT * FROM day WHERE all_filled = true AND week_id = '$week_id'"));
+        if ($days_check) {
+            $week = Week::where('id', $week_id)->first();
+            $week->all_filled_up = true;
+            $week->save();
+        }
+        return Response::json($days_check);
     }
 
     public function openWeekDays($id)
@@ -35,15 +42,6 @@ class DayController extends \BaseController
     public function create()
     {
         //
-    }
-    public function checkCompletion($day_id){
-        $hours = Hour::where('day_id', $day_id);
-        foreach($hours as $hour){
-            if($hour->the_log != 'NULL'){
-                Day::where('day_id',$day_id)->all_filled_up = true;
-                Day::where('day_id', $day_id)->save();
-            }
-        }
     }
 
     /**
