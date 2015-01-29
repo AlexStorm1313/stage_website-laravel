@@ -100,8 +100,8 @@ class HourController extends \BaseController
         $field = Hour::findOrFail($id);
         $day_id = $field->day_id;
         $week_id = $field->week_id;
-        $week = Week::where('id', $week_id)->pluck('all_filled_up');
-        if ($week !== 'true') {
+        $week = Week::where('id', $week_id)->pluck('completed');
+        if ($week == '0') {
             $field->the_log = $log;
             $field->save();
             $logs_check = DB::select(DB::raw("SELECT * FROM hour WHERE the_log = '' AND day_id = '$day_id'"));
@@ -111,9 +111,9 @@ class HourController extends \BaseController
                 $day->save();
             }
             //return Redirect::action('DayController@checkCompletion', array('day_id' => $day_id));
-            return Response::json(array(array('log' => $log)));
+            return Response::json(array(array('success_log' => $log)));
         } else {
-            return Response::json(array('log' => 'already completed'));
+            return Response::json(array('error_log' => 'already completed'));
         }
     }
 
