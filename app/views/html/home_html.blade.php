@@ -26,7 +26,6 @@
     <script type="text/javascript" src="{{ URL::asset('js/services/dayService.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/controllers/hourCtrl.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/services/hourService.js') }}"></script>
-    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <base href="/">
 </head>
 <header>
@@ -36,7 +35,10 @@
                 Welkom {{ Auth::user()->fname; }} {{ Auth::user()->infix; }} {{ Auth::user()->sname; }}</h1>
 
             <p class="animated fadeInUp">U bent een {{ Auth::user()->role; }}</p>
+            <p>Aantal Dagen die niet ingevuld zijn {{ Day::where('all_filled', '')->count() }}</p>
+            <p>Aantal Uren die niet ingevuld zijn {{ Hour::where('the_log', '')->count() }}</p>
         </div>
+
     </div>
 </header>
 <body>

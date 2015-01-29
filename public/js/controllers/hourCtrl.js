@@ -12,7 +12,9 @@ angular.module('hourCtrl', [])
             .success(function (data) {
                 $scope.days = data;
                 $scope.loading = false;
-            });
+            }
+        );
+        Hour.count();
 
         $scope.showDayHours = function (date_of_day) {
             $scope.loading = true;

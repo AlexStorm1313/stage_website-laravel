@@ -86,6 +86,11 @@ class HourController extends \BaseController
         //
     }
 
+    public function showRemainingHours(){
+        $count = Hour::where('the_log', '')->count();
+        return Response::json(array('count' => $count));
+    }
+
 
     /**
      * Update the specified resource in storage.

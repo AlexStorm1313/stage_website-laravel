@@ -10,6 +10,9 @@ angular.module('hourService', [])
             get: function () {
                 return $http.get('/api/hours');
             },
+            count: function () {
+                return $http.get('api/hours/count');
+            },
 
             //Display all days of the chosen week
             showDayHours: function (date_of_day) {
@@ -26,6 +29,7 @@ angular.module('hourService', [])
                     data: $.param(id, log)
                 });
             }
+
         }
 
     });

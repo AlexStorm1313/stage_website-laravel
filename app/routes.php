@@ -53,6 +53,7 @@ Route::group(array('prefix' => 'api'), function () {
     Route::put('hours/{hours}/{log}', array('before' => array('auth'), 'uses' => 'HourController@update'));
     Route::get('hours/{id}/opendayhours', array('before' => array('auth'), 'uses' => 'HourController@openDayHours'));
     Route::any('checkCompletion', array('before' => array('auth'), 'uses' => 'DayController@checkCompletion'));
+    Route::any('hours/count', array('before' => array('auth'), 'uses' => 'HourController@showRemainingHours'));
 });
 
 // =============================================
