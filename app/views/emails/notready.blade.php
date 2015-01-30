@@ -4,10 +4,10 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
-		<h2>Password Reset</h2>
+		<h2>Week not filled</h2>
 
 		<div>
-			hello tessssst
+			The intern coach tried to complete a week but it is not completely filled
 		</div>
 	</body>
 </html>

@@ -35,7 +35,7 @@
                 Welkom {{ Auth::user()->fname; }} {{ Auth::user()->infix; }} {{ Auth::user()->sname; }}</h1>
             <p class="animated fadeInUp">U bent een {{ Auth::user()->role; }}</p>
             <div>Aantal Dagen die niet ingevuld zijn <div style="color: #ff0000">{{ Day::where('all_filled', '')->count() }}</div></div>
-            <div>Aantal Uren die niet ingevuld zijn <div style="color: #ff0000">{{ Hour::where('the_log', '')->count() }}</div></div>
+            <div>Aantal Uren gewerkt <div style="color: cyan">{{ Hour::where('the_log', '!=', '')->count() }}</div></div>
         </div>
 
     </div>
